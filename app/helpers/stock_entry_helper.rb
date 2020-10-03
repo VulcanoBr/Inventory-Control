@@ -1,0 +1,2 @@
+module StockEntryHelper
+end

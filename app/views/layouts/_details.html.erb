@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Código:</strong>
+  <%= resource.id %>
+</p>
+
+<p>
+  <strong>Descrição:</strong>
+  <%= resource.description %>
+</p>
+<%= link_to 'Edit', public_send("edit_#{resource.model_name.param_key}_path", resource) %>
+|
+<%= link_to 'Back', public_send("#{resource.model_name.route_key}_path") %>
+
+
+
+

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  supplier_name: MyString
+  email: MyString
+  telephone: MyString
+  cell_phone: MyString
+  description: MyString
+  supplier: one
+
+two:
+  supplier_name: MyString
+  email: MyString
+  telephone: MyString
+  cell_phone: MyString
+  description: MyString
+  supplier: two

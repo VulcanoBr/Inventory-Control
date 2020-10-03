@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_type: one
+  description: MyString
+  reference: MyString
+  product_composition: one
+  product_color: one
+  product_size: one
+
+two:
+  product_type: two
+  description: MyString
+  reference: MyString
+  product_composition: two
+  product_color: two
+  product_size: two

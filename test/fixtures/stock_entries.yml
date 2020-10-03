@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_invoice: 2020-09-24
+  invoice: MyString
+  supplier: one
+  product: one
+  quantity: 1
+  unit_price: 9.99
+  date_entry: 2020-09-24
+  description: MyString
+
+two:
+  date_invoice: 2020-09-24
+  invoice: MyString
+  supplier: two
+  product: two
+  quantity: 1
+  unit_price: 9.99
+  date_entry: 2020-09-24
+  description: MyString

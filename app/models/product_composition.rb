@@ -1,0 +1,2 @@
+class ProductComposition < ApplicationRecord
+end
