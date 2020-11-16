@@ -1,7 +1,9 @@
-<h1>ProductType#edit</h1>
-<p>Find me in app/views/product_type/edit.html.erb</p>
+<br>
+<h5>Alterar Descrição do Tipo</h5>
 
 <%= render 'layouts/form', resource: @product_type %>
-
-<%= link_to 'Show', @product_type %> |
-<%= link_to 'Back', product_types_path %>%
+<br>
+<div class="link">
+    <%= link_to 'Visualizar', @product_type, class: 'btn btn-secondary btn-sm' %>
+    <%= link_to 'Lista', product_types_path, class: 'btn btn-warning btn-sm' %>
+</div>

@@ -1,0 +1,35 @@
+    <br>
+<table>
+    <thead>
+        <tr>
+            <th>Endereço</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>Codigo Postal</th>
+        
+        </tr>
+    </thead>
+
+    <tbody>
+        <% a = 0 %>
+
+        <% @address_suppliers.each do |as| %>  
+            <% if a < 1 %>
+                <h5>Endereço(s) do Fornecedor => <%= @address_supplier.supplier_name %> </h5> 
+                    <% a = 1 %>
+                    <br>
+            <% end %>
+            <tr>
+                <td><%= as.street + " " + as.number + " " + as.complement %></td>
+                <td><%= as.neighborhood %></td>
+                <td><%= as.city %></td>
+                <td><%= as.state %></td>
+                <td><%= as.zip_code %></td>
+            </tr>
+        <% end %>  
+    </tbody>
+</table>
+<br>
+
+<%= link_to 'Lista', suppliers_path, class: 'btn btn-warning btn-sm' %>

@@ -1,0 +1,63 @@
+<%= form_with(model: stock_entry, local: true) do |se| %>
+    <% if stock_entry.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(stock_entry.errors.count, "error") %> probalited this stock_entry from begin saved:</h2>
+
+            <ul>
+                <% stock_entry.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+        <% @time = Time.new.strftime("%d/%m/%Y") %>
+        <%= se.label :date_entry, value: @time %>
+        <%= se.date_field :date_entry, max: Date.today, value: @time.to_s %>
+    </div>
+
+   
+
+    <div class="field">
+        <%= se.label :product_id, "Produto :" %>
+        <%= se.select :stock_id, @stocks, include_blank: "Selecione um produto..." %> %>
+    </div>
+
+    <br>
+
+    <div class="field">
+        
+        <%= se.label :date_invoice, "Data da Nota Fiscal" %>
+        <%= se.date_field :date_invoice, max: Date.today %>
+    </div>
+    
+    <div class="field">
+       
+        <%= se.label :invoice, "Nota Fiscal" %>
+        <%= se.text_field :invoice %>
+    </div>
+
+    <div class="field">
+        <%= se.label :quantity, "Quantidade" %>
+        <%= se.number_field :quantity %>
+    </div>
+
+    <div class="field">
+        <%= se.label :unit_price, "Preço Unitario" %>
+        <%= se.text_field  :unit_price, id: "valor", name: "stock_entry[unit_price]"  %>
+        <%= javascript_pack_tag 'maskprice' %>
+    </div>
+
+    <div class="field">
+        <%= se.label :description, "Observação :" %>
+        <%= se.text_field :description %>
+    </div>
+    
+    <br>
+    <div class="action">
+        <%= se.submit "Salvar", class: 'btn btn-primary btn-sm' %>
+        <%= link_to 'Cancelar', stock_entries_path, class: 'btn btn-danger btn-sm' %>
+    </div>
+<% end %>
+

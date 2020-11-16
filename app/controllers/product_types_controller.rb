@@ -1,9 +1,9 @@
 class ProductTypesController < ApplicationController
    
-  before_action :set_produtct_type, only: [:edit, :create, :update, :destroy]
+  before_action :set_produtct_type, only: [:show, :edit, :update, :destroy]
 
   def index
-    @product_types = Product_Type.all
+    @product_types = ProductType.all
   end
 
   def show
@@ -13,11 +13,11 @@ class ProductTypesController < ApplicationController
   end
 
   def new
-    @product_type = Product_Type.new
+    @product_type = ProductType.new
   end
 
   def create
-    @product_type = Product_Type.new(product_type_params)
+    @product_type = ProductType.new(product_type_params)
 
     if @product_type.save
       redirect_to @product_type, notice: "Tipo de Produto criado com sucesso !!!"
@@ -42,11 +42,11 @@ class ProductTypesController < ApplicationController
   private
 
   def set_produtct_type
-    @product_type = Product_Type.find(params[:id])
+    @product_type = ProductType.find(params[:id])
   end
 
   def product_type_params
-    parms.require(:product_type).permit(:description)
+    params.require(:product_type).permit(:id, :description)
   end
 
 end

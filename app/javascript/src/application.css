@@ -12,9 +12,8 @@
     margin-right: auto;
     padding: 0 1rem;
 }
-  
 
-h1 {
+h5 {
     background-color: blue;
     color: #f2f2f2;
     text-align: center;
@@ -23,11 +22,11 @@ h1 {
 }
     
 .field {
-    padding: 20px;
+    padding: 10px;
 }
 
 th {
-    background-color: rgb(51, 51, 51);
+    background-color: gray;
     color: #f2f2f2;
     text-align: center;
     padding: 3px 5px;
@@ -40,7 +39,7 @@ td {
 }
 
 form .actions input[type='submit'] {
-    font-size: 14px;
+    font-size: 12px;
     background-color: blue;
     color: white;
     padding: 1rem 1rem;
@@ -48,4 +47,16 @@ form .actions input[type='submit'] {
     border-radius: 4px;
     border: none;
     padding: 0.5rem;
+}
+
+.link {
+    padding: 10px;
+}
+
+.addresses {
+    width: 400px;
+    padding: 5px 5px 5px 5px;
+    border: 2px solid red;;
+    border-radius: 2px;
+   
 }

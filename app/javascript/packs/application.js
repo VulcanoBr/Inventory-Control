@@ -17,3 +17,21 @@ require("channels")
 
 import 'bootstrap';
 import '../src/application.css';
+import '../src/style_navbar.css';
+
+import 'cocoon';
+
+import $ from 'jquery';
+global.$ = $;
+
+// require("packs/main")
+
+import("cpf_cnpj");
+// require("cpf/formatter")
+
+// require("jquery")
+// require("cocoon")
+
+// require("@nathanvda/cocoon")
+// require'../packs/maskcellphone.js';
+// require("packs/maskphone")

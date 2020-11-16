@@ -1,0 +1,64 @@
+<%= form_with(model: supplier, local: true) do |s| %>
+    <% if supplier.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(supplier.errors.count, "error") %> probalited this supplier from begin saved:</h2>
+
+            <ul>
+                <% supplier.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+        <%= s.label :supplier_name, "Nome :" %>
+        <%= s.text_field :supplier_name %>
+    </div>
+
+    <div class="field">
+        <%= radio_button_tag 'exp', "cpf" %> CPF
+        <%= radio_button_tag 'exp', "cnpj" %> CNPJ  : 
+        <%= s.text_field :identification, id: "cpfcnpj", name: "supplier[identification]" %> 
+        <%=  javascript_pack_tag 'supplierradiobuttons' %>
+    </div>
+
+    <div class="field">
+        <%= s.label :description, "Observação :" %>
+        <%= s.text_field :description %>
+    </div>
+
+    <br>
+
+    <div class="field">
+        
+        <%= s.fields_for :address_suppliers do |as| %>
+            <%= render "address_supplier_fields", f: as %>
+        <% end %>
+        
+    </div>
+    
+    <div class="links">
+        <%= link_to_add_association "Adicionar Endereço", s, :address_suppliers %>
+    </div>
+    
+    <br>
+
+    <div class="field">
+        
+        <%= s.fields_for :contact_suppliers do |cs| %>
+            <%= render "contact_supplier_fields", f: cs %>
+        <% end %>
+        
+    </div>
+    <div class="links">
+            <%= link_to_add_association "Adicionar Contato", s, :contact_suppliers %>
+            
+    </div>
+    <br>
+    <div class="action">
+        <%= s.submit "Salvar", class: 'btn btn-primary btn-sm' %>
+        <%= link_to 'Cancelar', suppliers_path, class: 'btn btn-danger btn-sm' %>
+    </div>
+<% end %>
+

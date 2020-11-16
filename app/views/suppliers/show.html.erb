@@ -1,2 +1,40 @@
-<h1>Supplier#show</h1>
-<p>Find me in app/views/supplier/show.html.erb</p>
+<p id="notice"> <%= notice %> </p>
+
+<h5>Fornecedor</h5>
+
+<p>
+    <strong>Nome:</strong>
+    <%= @supplier.supplier_name %>
+</p>
+
+<p>
+    <strong>CPF / CNPJ:</strong>
+    <%= @supplier.identification %>
+</p>
+
+<p>
+    <strong>Observação:</strong>
+    <%= @supplier.description %>
+</p>
+<h6><strong>Endereço</strong> </h6>
+
+<ul>
+    <% for @address_suppliers in @supplier.address_suppliers %>
+        <li><%= @address_suppliers.street + " " + @address_suppliers.number + " " + @address_suppliers.complement +
+                ", " + @address_suppliers.neighborhood + ", " + @address_suppliers.city + 
+                ", " + @address_suppliers.state + ", " + @address_suppliers.zip_code  %></li>
+    <% end %>
+</ul>
+
+<h6><strong> Contato</strong> </h6>
+
+<ul>
+    <% for @contact_suppliers in @supplier.contact_suppliers %>
+        <li><%= @contact_suppliers.supplier_name + ", " + @contact_suppliers.email + ", " + @contact_suppliers.telephone  +
+                ", " + @contact_suppliers.cell_phone + ", " + @contact_suppliers.description %> </li>
+    <% end %>
+</ul>
+<br>
+<%= link_to ' Alterar ', edit_supplier_path(@supplier), class: 'btn btn-primary btn-sm' %>    
+<%= link_to ' Lista ', suppliers_path, class: 'btn btn-warning btn-sm' %>
+<%= link_to 'Novo Fornecedor', new_supplier_path, class: 'btn btn-info btn-sm' %>

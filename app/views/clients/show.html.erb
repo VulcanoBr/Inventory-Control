@@ -1,2 +1,40 @@
-<h1>Client#show</h1>
-<p>Find me in app/views/client/show.html.erb</p>
+<p id="notice"> <%= notice %> </p>
+
+<h5>Cliente</h5>
+
+<p>
+    <strong>Nome:</strong>
+    <%= @client.client_name %>
+</p>
+
+<p>
+    <strong>CPF / CNPJ:</strong>
+    <%= @client.identification %>
+</p>
+
+<p>
+    <strong>Observação:</strong>
+    <%= @client.description %>
+</p>
+<h6><strong>Endereço</strong> </h6>
+
+<ul>
+    <% for @address_clients in @client.address_clients %>
+        <li><%= @address_clients.street + " " + @address_clients.number + " " + @address_clients.complement +
+                ", " + @address_clients.neighborhood + ", " + @address_clients.city + 
+                ", " + @address_clients.state + ", " + @address_clients.zip_code  %></li>
+    <% end %>
+</ul>
+
+<h6><strong>Contato</strong> </h6>
+
+<ul>
+    <% for @contact_clients in @client.contact_clients %>
+        <li><%= @contact_clients.client_name + ", " + @contact_clients.email + ", " + @contact_clients.telephone  +
+                ", " + @contact_clients.cell_phone + ", " + @contact_clients.description %> </li>
+    <% end %>
+</ul>
+<br>
+<%= link_to ' Alterar ', edit_client_path(@client), class: 'btn btn-primary btn-sm' %>    
+<%= link_to ' Lista ', clients_path, class: 'btn btn-warning btn-sm' %>
+<%= link_to 'Novo Cliente', new_client_path, class: 'btn btn-info btn-sm' %>

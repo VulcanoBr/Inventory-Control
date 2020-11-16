@@ -1,0 +1,38 @@
+<br>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Celular</th>
+            <th>Observação</th>
+        
+        </tr>
+    </thead>
+
+    <tbody>
+    
+        <% a = 0 %>
+
+        <% @contact_suppliers.each do |cs| %>  
+
+            <% if a < 1 %> 
+                <h5>Contato(s) do Fornecedor => <%= @contact_supplier.supplier_name %> </h5> 
+                <% a = 1 %>
+                <br>
+            <% end %>
+            <tr>
+                <td><%= cs.supplier_name %></td>
+                <td><%= cs.email %></td>
+                <td><%= cs.telephone %></td>
+                <td><%= cs.cell_phone %></td>
+                <td><%= cs.description %></td>
+            </tr>
+        <% end %>  
+    <tbody>
+</table>
+<br>
+
+<%= link_to 'Lista', suppliers_path, class: 'btn btn-warning btn-sm' %>

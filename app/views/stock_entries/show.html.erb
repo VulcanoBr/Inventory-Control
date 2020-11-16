@@ -1,2 +1,57 @@
-<h1>StockEntry#show</h1>
-<p>Find me in app/views/stock_entry/show.html.erb</p>
+
+<p id="notice"> <%= notice %> </p>
+
+<h5>Entrada no Estoque</h5>
+
+<p>
+    <strong>Produto:</strong>
+    <%= @stock_entry.stock.product.description + ", " + @stock_entry.stock.product.product_color.description + ", " + 
+        @stock_entry.stock.product.product_composition.description + ", " + @stock_entry.stock.product.product_size.description %>
+</p>
+
+<p>
+    <strong>Fornecedor:</strong>
+    <%= @stock_entry.stock.product.supplier.supplier_name %>
+</p>
+
+<p>
+    <strong>Referencia:</strong>
+    <%= @stock_entry.stock.product.reference %>
+</p>
+
+<p>
+    <strong>Data de Entrada:</strong>
+    <%= @stock_entry.date_entry.strftime("%d/%m/%Y") %>
+</p>
+
+<p>
+    <strong>Data da Nota Fiscal:</strong>
+    <%= @stock_entry.date_invoice.strftime("%d/%m/%Y")  %>
+</p>
+
+<p>
+    <strong>Numero da Nota Fiscal:</strong>
+    <%= @stock_entry.invoice %>
+</p>
+
+<p>Quantidade:</strong>
+    <%= @stock_entry.quantity %>
+</p>
+
+<p>Preço Unitarioe:</strong>
+    <%=  number_to_currency(@stock_entry.unit_price, locale: :"pt-BR") %>
+</p>
+
+<p>Observação:</strong>
+    <%= @stock_entry.description %>
+</p>
+
+<p>
+    <strong>Data Atualização:</strong>
+    <%= @stock_entry.updated_at.strftime("%d/%m/%Y %H:%M") %>
+</p>
+
+<br>
+<%= link_to ' Alterar ', edit_stock_entry_path(@stock_entry), class: 'btn btn-primary btn-sm' %>    
+<%= link_to ' Lista ', stock_entries_path, class: 'btn btn-warning btn-sm' %>
+<%= link_to 'Nova Entrada no Estoque', new_stock_entry_path, class: 'btn btn-info btn-sm' %>

@@ -9,9 +9,9 @@
   <strong>Descrição:</strong>
   <%= resource.description %>
 </p>
-<%= link_to 'Edit', public_send("edit_#{resource.model_name.param_key}_path", resource) %>
-|
-<%= link_to 'Back', public_send("#{resource.model_name.route_key}_path") %>
+<%= link_to 'Alterar', public_send("edit_#{resource.model_name.param_key}_path", resource), class: 'btn btn-success btn-sm' %>
+<%= link_to 'Lista', public_send("#{resource.model_name.route_key}_path"), class: 'btn btn-warning btn-sm' %>
+<%= link_to 'Nova Descrição', public_send("new_#{resource.model_name.param_key}_path", resource), class: 'btn btn-info btn-sm'%>
 
 
 

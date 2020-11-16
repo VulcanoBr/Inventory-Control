@@ -1,2 +1,41 @@
-<h1>Stock#index</h1>
-<p>Find me in app/views/stock/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+<h5>Lista de Produto(s) em Estoque</h5>
+
+<table>
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Fornecedor </th>
+            <th>Estoque Minimo</th>
+            <th>Qtd. Atual</th>
+            <th>Ultimo Preço</th>
+            
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @stocks.each do |s| %>
+            <tr>
+                <td><%= s.product.description + ", " + s.product.product_color.description + ", " + 
+                        s.product.product_composition.description + ", " + 
+                        s.product.product_size.description %></td>
+                
+                <td><%= s.product.supplier.supplier_name %></td>
+               
+                <td><%= s.minimum_quantity%> </td>
+                <td><%= s.quantity %> </td>
+                <td><%= number_to_currency(s.last_unit_price, :unit => "R$", :separator => ",", :delimiter => ".") %> </td>
+                        
+                <td><%= link_to ' Visualizar ', stock_path(s),  class: 'btn btn-secondary btn-sm'  %></td>
+                <td><%= link_to ' Alterar ', edit_stock_path(s), class: 'btn btn-success btn-sm' %></td>
+                <td><%= link_to ' Excluir ', s, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %> </td>
+                
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Produto', new_stock_path, class: 'btn btn-info btn-sm' %>
+<%= link_to 'Sair', homes_path, class: 'btn btn-dark btn-sm' %>

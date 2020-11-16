@@ -1,0 +1,43 @@
+<%= form_with(model: stock, local: true) do |p| %>
+    <% if stock.errors.any? %>
+        <div id="error_explanation">
+            <h4><%= pluralize(stock.errors.count, "error") %> probalited this stock from begin saved:</h4>
+
+            <ul>
+                <% stock.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+     <div class="field">
+        <%= p.label :product_id_id, "Produto: " %>
+        <%= p.select :product_id, @products, include_blank: "Selecione um produto..." %>
+        
+    </div>
+    
+     <div class="field">
+        <%= p.label :minimum_quantity, "Estoque Minimo : " %>
+        <%= p.number_field :minimum_quantity %>
+    </div>
+     <div class="field">
+        <%= p.label :quantity, "Quantidade Atual : " %>
+        <%= p.number_field :quantity  %>
+    </div>
+     <div class="field">
+        <%= p.label :last_unit_price, "Ultimo Preço : " %>
+        <%= p.text_field :last_unit_price %>
+    </div>
+    <div class="field">
+        <%= p.label :description, "Descrição :" %>
+        <%= p.text_field :description %>
+    </div>
+    
+
+    <br>
+    <div class="action">
+        <%= p.submit "Salvar", class: 'btn btn-primary btn-sm' %>
+        <%= link_to 'Cancelar', stocks_path, class: 'btn btn-danger btn-sm' %>
+    </div>
+<% end %>

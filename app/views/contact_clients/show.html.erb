@@ -1,0 +1,38 @@
+<br>
+    
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Celular</th>
+            <th>Observação</th>
+        
+        </tr>
+    </thead>
+
+    <tbody>
+    
+        <% a = 0 %>
+
+        <% @contact_clients.each do |cc| %>  
+
+            <% if a < 1 %> 
+                <h5>Contato(s) do Cliente => <%= @contact_client.client_name %> </h5> 
+                <% a = 1 %>
+                <br>
+            <% end %>
+            <tr>
+                <td><%= cc.client_name %></td>
+                <td><%= cc.email %></td>
+                <td><%= cc.telephone %></td>
+                <td><%= cc.cell_phone %></td>
+                <td><%= cc.description %></td>
+            </tr>
+        <% end %>  
+    <tbody>
+</table>
+<br>
+
+<%= link_to 'Lista', clients_path, class: 'btn btn-warning btn-sm' %>

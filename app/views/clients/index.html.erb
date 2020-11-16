@@ -1,2 +1,47 @@
-<h1>Client#index</h1>
-<p>Find me in app/views/client/index.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+<h5>Lista de Cliente(s)</h5>
+
+<br>
+<%= form_with(url: '/clients', method: 'get', local: true) do %>
+  <%= text_field_tag (:search) %>
+  <%= submit_tag "Pesquisar", class: "btn btn-info glyphicon glyphicon-search btn-sm" %>
+<% end %>
+<br>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>CPF / CNPJ</th>
+            <th>OBS</th>
+            <th>Endereço(s)</th>
+            <th>Contato(s)</th>
+           
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @clients.each do |c| %>
+            <tr>
+                <td><%= c.client_name %></td>
+                <td><%= c.identification %></td>
+                <td><%= c.description %></td>
+
+                <td><%= link_to ' Endereço(s) ', address_client_path(id: c.id) %> </td>
+                <td><%= link_to ' Contato(s) ', contact_client_path(id: c.id) %> </td>
+                        
+                <td><%= link_to ' Visualizar ', client_path(c),  class: 'btn btn-secondary btn-sm'  %></td>
+                <td><%= link_to ' Alterar ', edit_client_path(c), class: 'btn btn-success btn-sm' %></td>
+                <td><%= link_to ' Excluir ', c, method: :delete, data: { confirm: "Voce tem certeza que quer Excluir?" }, class: 'btn btn-danger btn-sm' %> </td>
+                
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Cliente', new_client_path, class: 'btn btn-info btn-sm' %>
+<%= link_to 'Sair', homes_path, class: 'btn btn-dark btn-sm' %>

@@ -1,0 +1,26 @@
+pt-BR:
+  activerecord:
+    models:
+      post: 'Post'
+      comment: 'Comentário'
+
+    attributes:
+      post:
+        title: 'Titulo'
+        author: 'Autor'
+        body: 'Post'
+      comment:
+        author: 'Autor'
+        body: 'Comentário'
+  
+  date:
+    formats:
+    default: "%d/%m/%Y"
+
+  number:
+      currency:
+        format:
+          format: "%u %n"
+          unit: "R$"
+          separator: ","
+          delimiter: "."    

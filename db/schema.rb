@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_25_193205) do
+ActiveRecord::Schema.define(version: 2020_10_30_030546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2020_09_25_193205) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "supplier_id", null: false
+    t.string "status"
     t.index ["product_color_id"], name: "index_products_on_product_color_id"
     t.index ["product_composition_id"], name: "index_products_on_product_composition_id"
     t.index ["product_size_id"], name: "index_products_on_product_size_id"
@@ -119,40 +120,38 @@ ActiveRecord::Schema.define(version: 2020_09_25_193205) do
   create_table "stock_adjustments", force: :cascade do |t|
     t.string "reason"
     t.date "date_adjustment"
-    t.bigint "product_id", null: false
+    t.bigint "stock_id", null: false
     t.integer "quantity"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_stock_adjustments_on_product_id"
+    t.index ["stock_id"], name: "index_stock_adjustments_on_stock_id"
   end
 
   create_table "stock_entries", force: :cascade do |t|
     t.date "date_invoice"
     t.string "invoice"
-    t.bigint "supplier_id", null: false
-    t.bigint "product_id", null: false
+    t.bigint "stock_id", null: false
     t.integer "quantity"
     t.decimal "unit_price"
     t.date "date_entry"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_stock_entries_on_product_id"
-    t.index ["supplier_id"], name: "index_stock_entries_on_supplier_id"
+    t.index ["stock_id"], name: "index_stock_entries_on_stock_id"
   end
 
   create_table "stock_outs", force: :cascade do |t|
     t.string "order_number"
     t.bigint "client_id", null: false
     t.string "date_out"
-    t.bigint "product_id", null: false
+    t.bigint "stock_id", null: false
     t.integer "quantity"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_stock_outs_on_client_id"
-    t.index ["product_id"], name: "index_stock_outs_on_product_id"
+    t.index ["stock_id"], name: "index_stock_outs_on_stock_id"
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -183,10 +182,9 @@ ActiveRecord::Schema.define(version: 2020_09_25_193205) do
   add_foreign_key "products", "product_sizes"
   add_foreign_key "products", "product_types"
   add_foreign_key "products", "suppliers"
-  add_foreign_key "stock_adjustments", "products"
-  add_foreign_key "stock_entries", "products"
-  add_foreign_key "stock_entries", "suppliers"
+  add_foreign_key "stock_adjustments", "stocks"
+  add_foreign_key "stock_entries", "stocks"
   add_foreign_key "stock_outs", "clients"
-  add_foreign_key "stock_outs", "products"
+  add_foreign_key "stock_outs", "stocks"
   add_foreign_key "stocks", "products"
 end

@@ -1,2 +1,49 @@
-<h1>Stock#show</h1>
-<p>Find me in app/views/stock/show.html.erb</p>
+<p id="notice"> <%= notice %> </p>
+
+<h5>Produto em Estoque</h5>
+
+<p>
+    <strong>Produto:</strong>
+    <%= @stock.product.description + ", " + @stock.product.product_color.description + ", " + 
+        @stock.product.product_composition.description + ", " + @stock.product.product_size.description %>
+</p>
+
+<p>
+    <strong>Fornecedor:</strong>
+    <%= @stock.product.supplier.supplier_name %>
+</p>
+
+<p>
+    <strong>Referencia:</strong>
+    <%= @stock.product.reference %>
+</p>
+
+<p>
+    <strong>Estoque Minimo:</strong>
+    <%= @stock.minimum_quantity %>
+</p>
+
+<p>
+    <strong>Quantidade:</strong>
+    <%= @stock.quantity %>
+</p>
+
+<p>
+    <strong>Ultimo Preço:</strong>
+    <%= number_to_currency(@stock.last_unit_price, locale: :"pt-BR") %>
+</p>
+
+<p>
+    <strong>Observação:</strong>
+    <%= @stock.description %>
+</p>
+
+<p>
+    <strong>Data Atualização:</strong>
+    <%= @stock.updated_at.strftime("%d/%m/%Y %H:%M") %>
+</p>
+
+<br>
+<%= link_to ' Alterar ', edit_stock_path(@stock), class: 'btn btn-primary btn-sm' %>    
+<%= link_to ' Lista ', stocks_path, class: 'btn btn-warning btn-sm' %>
+<%= link_to 'Novo Produto no Estoque', new_stock_path, class: 'btn btn-info btn-sm' %>

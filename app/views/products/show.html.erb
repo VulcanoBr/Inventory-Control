@@ -1,2 +1,48 @@
-<h1>Product#show</h1>
-<p>Find me in app/views/product/show.html.erb</p>
+<p id="notice"> <%= notice %> </p>
+
+<h5>Produto</h5>
+
+<p>
+    <strong>Tipo de Produto:</strong>
+    <%= @product.product_type.description %>
+</p>
+
+<p>
+    <strong>Descrição:</strong>
+    <%= @product.description %>
+</p>
+
+<p>
+    <strong>Cor:</strong>
+    <%= @product.product_color.description %>
+</p>
+
+<p>
+    <strong>Composição:</strong>
+    <%= @product.product_composition.description %>
+</p>
+
+<p>
+    <strong>Tamanho:</strong>
+    <%= @product.product_size.description %>
+</p>
+
+<p>
+    <strong>Fornecedor:</strong>
+    <%= @product.supplier.supplier_name %>
+</p>
+
+<p>
+    <strong>Referencia:</strong>
+    <%= @product.reference %>
+</p>
+
+<p>
+    <strong>Status:</strong>
+    <%= @product.status %>
+</p>
+
+<br>
+<%= link_to ' Alterar ', edit_product_path(@product), class: 'btn btn-primary btn-sm' %>    
+<%= link_to ' Lista ', products_path, class: 'btn btn-warning btn-sm' %>
+<%= link_to 'Novo Produto', new_product_path, class: 'btn btn-info btn-sm' %>

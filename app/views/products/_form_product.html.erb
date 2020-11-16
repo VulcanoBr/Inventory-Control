@@ -1,0 +1,49 @@
+<%= form_with(model: product, local: true) do |p| %>
+    <% if product.errors.any? %>
+        <div id="error_explanation">
+            <h4><%= pluralize(product.errors.count, "error") %> probalited this product from begin saved:</h4>
+
+            <ul>
+                <% product.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+     <div class="field">
+        <%= p.label :product_type_id, "Tipo de Produto: " %>
+        <%= p.select :product_type_id, @product_types, include_blank: "Selecione um produto..." %>
+        
+    </div>
+    <div class="field">
+        <%= p.label :description, "Descrição :" %>
+        <%= p.text_field :description %>
+    </div>
+     <div class="field">
+        <%= p.label :product_color_id, "Cor : " %>
+        <%= p.select :product_color_id, @product_colors, include_blank: "Selecione uma cor..." %>
+    </div>
+     <div class="field">
+        <%= p.label :product_composition_id, "Composição : " %>
+        <%= p.select :product_composition_id, @product_compositions, include_blank: "Selecione uma composição..." %>
+    </div>
+     <div class="field">
+        <%= p.label :product_size_id, "Tamanho : " %>
+        <%= p.select :product_size_id, @product_sizes, include_blank: "Selecione um tamanho..." %>
+    </div>
+     <div class="field">
+        <%= p.label :supplier_id, "Fornecedor : " %>
+        <%= p.select :supplier_id, @suppliers, include_blank: "Selecione um fornecedor..." %>
+    </div>
+    <div class="field">
+        <%= p.label :description, "Referencia :" %>
+        <%= p.text_field :reference %>
+    </div>
+
+    <br>
+    <div class="action">
+        <%= p.submit "Salvar", class: 'btn btn-primary btn-sm' %>
+        <%= link_to 'Cancelar', products_path, class: 'btn btn-danger btn-sm' %>
+    </div>
+<% end %>

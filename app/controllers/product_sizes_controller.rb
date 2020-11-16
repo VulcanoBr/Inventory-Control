@@ -1,6 +1,6 @@
 class ProductSizesController < ApplicationController
    
-  before_action :set_product_size, only: [:edit, :create, :update, :destroy]
+  before_action :set_product_size, only: [:show, :edit, :update, :destroy]
 
   def index
     @product_sizes = ProductSize.all
@@ -46,7 +46,7 @@ class ProductSizesController < ApplicationController
   end
 
   def product_size_params
-    parms.require(:product_size).permit(:description)
+    params.require(:product_size).permit(:id, :description)
   end
 
 end
