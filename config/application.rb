@@ -14,8 +14,11 @@ module InventoryControl
    # config.time_zone = 'America/Sao_Paulo'
 
     config.time_zone = 'Brasilia'
+    config.active_record.default_timezone = :local
 
-    config.i18n.default_locale = 'pt-BR'
+    #  config.i18n.default_locale = 'pt-BR'
+    config.i18n.default_locale = :"pt-BR"
+    I18n.enforce_available_locales = false  
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

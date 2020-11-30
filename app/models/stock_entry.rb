@@ -14,16 +14,18 @@ class StockEntry < ApplicationRecord
     if quantity > 0
       @old_quantity = stock.quantity
       new_quantity = stock.quantity + quantity
-      x = (unit_price).to_s
-      x.sub(',','.')
-      new_price = x.to_f
-     
-
+   
+      new_price = unit_price
+    
       stock.update(quantity: new_quantity, last_unit_price: new_price)
     else
       errors.add(quantity.to_s, ", Quantidade Nâo Pode ser negativa")
-    
+      errors.add(x.to_s, ", valor")
     end
+  end
+
+  def valor=(unit_price)
+    write_attribute(:unit_price, unit_price.tr(',.', '').to_f/100)
   end
 
 end
