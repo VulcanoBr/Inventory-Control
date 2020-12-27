@@ -1,0 +1,53 @@
+<%= form_with(model: stock_out, local: true) do |so| %>
+    <% if stock_out.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(stock_out.errors.count, "error") %> probalited this stock_out from begin saved:</h2>
+
+            <ul>
+                <% stock_out.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+        
+        <%= so.label :date_out, "Data da Saida" %>
+        <%= so.date_field :date_out, max: Date.today %>
+    </div>
+    
+    <div class="field">
+        <%= so.label :invoice, "Numero do Pedido" %>
+        <%= so.text_field :order_number %>
+    </div>
+
+     <div class="field">
+        <%= so.label :clientt_id, "Cliente :" %>
+        <%= so.select :client_id, @clients, include_blank: "solecione um cliente..." %> 
+    </div>
+
+    <div class="field">
+        <%= so.label :product_id, "Produto :" %>
+        <%= so.select :stock_id, @stocks, include_blank: "solecione um produto..." %> 
+    </div>
+
+    <div class="field">
+        <%= so.label :quantity, "Quantidade" %>
+        <%= so.number_field :quantity %>
+    </div>
+
+    <div class="field">
+        <%= so.label :description, "Obsorvação :" %>
+        <%= so.text_field :description %>
+    </div>
+    
+    <br>
+    <div class="actions">
+        <%= so.submit "Salvar", class: "btn btn-primary btn-sm",  onClick: "convert();" %>
+        <%= link_to 'Cancelar', stock_outs_path, class: 'btn btn-danger btn-sm' %>
+    </div>
+<% end %>
+
+
+

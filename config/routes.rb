@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :contact_clients, only: [:show]
   resources :stocks
   resources :stock_entries
+  resources :stock_outs
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

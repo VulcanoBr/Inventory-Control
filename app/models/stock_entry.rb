@@ -20,12 +20,7 @@ class StockEntry < ApplicationRecord
       stock.update(quantity: new_quantity, last_unit_price: new_price)
     else
       errors.add(quantity.to_s, ", Quantidade Nâo Pode ser negativa")
-      errors.add(x.to_s, ", valor")
+      
     end
   end
-
-  def valor=(unit_price)
-    write_attribute(:unit_price, unit_price.tr(',.', '').to_f/100)
-  end
-
 end

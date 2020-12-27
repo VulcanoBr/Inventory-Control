@@ -17,10 +17,11 @@
     </div>
 
     <div class="field">
-        <%= radio_button_tag 'exp', "cpf" %> CPF
-        <%= radio_button_tag 'exp', "cnpj" %> CNPJ  : 
-        <%= s.text_field :identification, id: "cpfcnpj", name: "supplier[identification]" %> 
-        <%=  javascript_pack_tag 'supplierradiobuttons' %>
+        <%= radio_button_tag :document_type, "cpf" %> CPF
+        <%= radio_button_tag :document_type, "cnpj" %> CNPJ  : 
+        <%= s.text_field :identification, class: "cpf-cnpj-with-mask", placeholder: "Escolha CPF ou CNPJ" %>
+       
+        <%= javascript_pack_tag "supplierradiobuttons" %>
     </div>
 
     <div class="field">
@@ -61,4 +62,5 @@
         <%= link_to 'Cancelar', suppliers_path, class: 'btn btn-danger btn-sm' %>
     </div>
 <% end %>
+
 

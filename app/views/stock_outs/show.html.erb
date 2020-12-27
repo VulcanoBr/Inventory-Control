@@ -1,2 +1,50 @@
-<h1>StockOut#show</h1>
-<p>Find me in app/views/stock_out/show.html.erb</p>
+<h5>Saida do Estoque</h5>
+
+<p>
+    <strong>Produto:</strong>
+    <%= @stock_out.stock.product.description + ", " + @stock_out.stock.product.product_color.description + ", " + 
+        @stock_out.stock.product.product_composition.description + ", " + @stock_out.stock.product.product_size.description %>
+</p>
+
+<p>
+    <strong>Fornecedor:</strong>
+    <%= @stock_out.stock.product.supplier.supplier_name %>
+</p>
+
+<p>
+    <strong>Referencia:</strong>
+    <%= @stock_out.stock.product.reference %>
+</p>
+
+<p>
+    <strong>Data da Saida:</strong>
+        <%= @stock_out.date_out %>
+</p>
+
+<p>
+    <strong>Numero do Pedido:</strong>
+    <%= @stock_out.order_number %>
+</p>
+
+<p>
+    <strong>Cliente:</strong>
+    <%= @stock_out.client.client_name %>
+</p>
+
+<p>Quantidade:</strong>
+    <%= @stock_out.quantity %>
+</p>
+
+<p>Observação:</strong>
+    <%= @stock_out.description %>
+</p>
+
+<p>
+    <strong>Data Atualização:</strong>
+    <%= @stock_out.updated_at.strftime("%d/%m/%Y %H:%M") %>
+</p>
+
+<br>
+<%= link_to ' Alterar ', edit_stock_out_path(@stock_out), class: 'btn btn-primary btn-sm' %>    
+<%= link_to ' Lista ', stock_outs_path, class: 'btn btn-warning btn-sm' %>
+<%= link_to 'Nova Saida do Estoque', new_stock_out_path, class: 'btn btn-info btn-sm' %>

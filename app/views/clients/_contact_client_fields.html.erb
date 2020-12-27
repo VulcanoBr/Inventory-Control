@@ -11,23 +11,23 @@
         </div>
         <div class="field" >
             <%= f.label :telephone, "Telefone :" %>
-            <%= f.text_field :telephone, id: "phone", placeholder: "(99)9999-9999", pattern: "\([0-9]{2}\) [0-9]{4}-[0-9]{4}" %>
-            <%= javascript_pack_tag 'maskphone' %>  
+            <%= f.text_field :telephone, class: "phone-with-mask", placeholder: "(99)9999-9999", maxlength: "14" %>
+             
         </div>
         <div class="field" >
             <%= f.label :cell_phone, "Celular :" %>
-            <%= f.text_field :cell_phone, id: "cellphone", placeholder: "(99)99999-9999" %>
-            <%= javascript_pack_tag 'maskcellphone' %> 
+            <%= f.text_field :cell_phone, class: "phone-with-mask", placeholder: "(99)99999-9999", maxlength: "15" %>
+            
         </div>
         <div class="field">
             <%= f.label :description, "Observação :" %>
-            <%= f.text_field :description, id: "obs", pattern: "^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}" %>
+            <%= f.text_field :description, id: "obs" %>
         </div>
 
         <%= link_to_remove_association "Excluir Contato", f %>  
 
     </div>
-
+    <%= javascript_pack_tag "masktel" %>
 
 </div>
 <br>

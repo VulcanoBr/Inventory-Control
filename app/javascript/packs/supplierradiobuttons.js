@@ -1,48 +1,41 @@
 
-x = "";
-
-(function (){
-    var radios = document.getElementsByName('exp');
-    
-    for(var i = 0; i < radios.length; i++){
-        radios[i].onclick = function(){
-            x = this.value;
-            if (x === "cpf") {
-                document.querySelector("input[name='supplier[identification]']").value  = "";
-                document.querySelector("input[name='supplier[identification]']").placeholder = "CPF";
-                mascaracpf();   
-            }
-            
-            else  if (x === "cnpj") {
-                    document.querySelector("input[name='supplier[identification]']").value  = "";
-                    document.querySelector("input[name='supplier[identification]']").placeholder = "CNPJ";
-                    mascaracnpj();
-                    }
-                   else
-                        alert(" Escolha CPF  ou  CNPJ");
-        
-        }
-    }
-})();
-
-
-
-function mascaracpf( ){
-    var c = "";
-    document.getElementById('cpfcnpj').addEventListener('input', function(e) {
-        c = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
-        e.target.value = !c[2] ? c[1] : c[1] + '.' + c[2] + '.' + c[3] + (c[4] ? '-' + c[4] : '');
+document.addEventListener("DOMContentLoaded", () => {
+    addMaskToDocumentField();
+});
+  
+const cpfMask = ({ target }) => {
+    const x = target.value.replace(/\D/g, "").match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
+    target.value = x[2] ? `${x[1]}.${x[2]}.${x[3]}${x[4] ? "-" + x[4] : ""}` : x[1];
+};
+  
+const cnpjMask = ({ target }) => {
+    const x = target.value.replace(/\D/g, "").match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
+    target.value = x[2] ? `${x[1]}.${x[2]}.${x[3]}/${x[4]}${x[5] ? "-" + x[5] : ""}` : x[1];
+};
+  
+function addMaskToDocumentField() {
+    const cpfCnpjInput = document.querySelector("input[name='supplier[identification]']");
+  
+    document.querySelectorAll("input[name=document_type]").forEach((radioButton) => {
+      radioButton.addEventListener("change", ({ target }) => {
+        cpfCnpjInput.disabled = false;
+        cpfCnpjInput.placeholder = target.value.toUpperCase();
+        cpfCnpjInput.value = ""; // Limpa o campo
+        cpfCnpjInput.focus();
+  
+        switch (target.value) {
+          case "cpf":
+            cpfCnpjInput.removeEventListener("keyup", cnpjMask);
+            cpfCnpjInput.addEventListener("keyup", cpfMask);
+            break;
+  
+          case "cnpj":
+            cpfCnpjInput.removeEventListener("keyup", cpfMask);
+            cpfCnpjInput.addEventListener("keyup", cnpjMask);
+            break;
+        };
+      });
     });
-
-}
-
-function mascaracnpj( ){
-    var z = "";
-    document.getElementById('cpfcnpj').addEventListener('input', function(e) {
-        z = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,2})/);
-        e.target.value = !z[2] ? z[1] : z[1] + '.' + z[2] + '.' + z[3] + '/' + z[4] + (z[5] ? '-' + z[5] : '');
-    });
-
-}
+};
 
 

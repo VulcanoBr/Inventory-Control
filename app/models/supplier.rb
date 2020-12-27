@@ -23,7 +23,7 @@ class Supplier < ApplicationRecord
 
     def cpfcnpj
         if (identification.nil?)  ||  (identification.empty?)  || (identification.blank?)
-            errors.add("",  "CPF não preenchido   !!!  ")
+            errors.add(:identification,  "CPF ou CNPJ  não preenchido   !!!  ")
         else
             if identification.length ==  14
                 cpf = CPF.new(identification)

@@ -12,16 +12,16 @@
     <% end %>
 
     <div class="field">
-        <% @time = Time.new.strftime("%d/%m/%Y") %>
+       
         <%= se.label :date_entry, value: @time %>
-        <%= se.date_field :date_entry, max: Date.today, value: @time.to_s %>
+        <%= se.date_field :date_entry, max: Date.today %>
     </div>
 
    
 
     <div class="field">
         <%= se.label :product_id, "Produto :" %>
-        <%= se.select :stock_id, @stocks, include_blank: "Selecione um produto..." %> %>
+        <%= se.select :stock_id, @stocks, include_blank: "Selecione um produto..." %> 
     </div>
 
     <br>
@@ -45,8 +45,8 @@
 
     <div class="field">
         <%= se.label :unit_price, "Preço Unitario" %>
-        <%= se.text_field  :unit_price, id: "valor", name: "stock_entry[unit_price]"  %>
-        <%= javascript_pack_tag 'maskprice' %>  
+        <%= se.text_field  :unit_price, class: "price-with-mask", placeholder: "0,00"  %>
+          
        
     </div>
 
@@ -56,9 +56,12 @@
     </div>
     
     <br>
-    <div class="action">
-        <%= se.submit "Salvar", class: 'btn btn-primary btn-sm' %>
+    <div class="actions">
+        <%= se.submit "Salvar", class: "btn btn-primary btn-sm convert" %>
         <%= link_to 'Cancelar', stock_entries_path, class: 'btn btn-danger btn-sm' %>
     </div>
 <% end %>
+<%= javascript_pack_tag 'maskprice' %>
+<%= javascript_pack_tag 'convertprice' %>
+
 
