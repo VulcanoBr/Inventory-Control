@@ -1,7 +1,7 @@
 <%= form_with(model: stock_entry, local: true) do |se| %>
     <% if stock_entry.errors.any? %>
         <div id="error_explanation">
-            <h2><%= pluralize(stock_entry.errors.count, "error") %> probalited this stock_entry from begin saved:</h2>
+            <h2><%= pluralize(stock_entry.errors.count, "erros") %> Encontrados no preenchimento do formulario !!</h2>
 
             <ul>
                 <% stock_entry.errors.full_messages.each do |message| %>
@@ -16,8 +16,6 @@
         <%= se.label :date_entry, value: @time %>
         <%= se.date_field :date_entry, max: Date.today %>
     </div>
-
-   
 
     <div class="field">
         <%= se.label :product_id, "Produto :" %>

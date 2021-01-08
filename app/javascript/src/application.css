@@ -11,6 +11,8 @@
     margin-left: auto;
     margin-right: auto;
     padding: 0 1rem;
+    border: 1px;
+    border-radius: 2px;
 }
 
 h5 {

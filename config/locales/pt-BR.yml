@@ -1,21 +1,69 @@
 pt-BR:
+
   activerecord:
+    errors:
+      messages:
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+        has_one: Não é possível excluir o registro pois existe um %{record} dependente
+        has_many: Não é possível excluir o registro pois existem %{record} dependentes
+        inclusion: "não está incluído na lista"
+        exclusion: "não está disponível"
+        invalid: "não é válido"
+        confirmation: "não está de acordo com a confirmação"
+        accepted: "deve ser aceito"
+        empty: "não pode ficar vazio"
+        blank: "não pode ficar em branco"
+        required: "campo obrigatorio"
+        too_long: "é muito longo (máximo: %{count} caracteres)"
+        too_short: "é muito curto (mínimo: %{count} caracteres)"
+        wrong_length: "não possui o tamanho esperado (%{count} caracteres)"
+        taken: "já está em uso"
+        not_a_number: "não é um número"
+        not_an_integer: "não é um número inteiro"
+        greater_than: "deve ser maior do que %{count}"
+        greater_than_or_equal_to: "deve ser maior ou igual a %{count}"
+        equal_to: "deve ser igual a %{count}"
+        less_than: "deve ser menor do que %{count}"
+        less_than_or_equal_to: "deve ser menor ou igual a %{count}"
+        odd: "deve ser ímpar"
+        even: "deve ser par"
+
+      template:
+        header:
+          one: "Não foi possível gravar %{model}: 1 erro"
+          other: "Não foi possível gravar %{model}: %{count} erros."
+        body: "Por favor, verifique o(s) seguinte(s) campo(s):"
+
     models:
-      post: 'Post'
-      comment: 'Comentário'
+      stock_entry: 'Entrada no Estoque'
+      stock: 'Estoque'
 
     attributes:
-      post:
-        title: 'Titulo'
-        author: 'Autor'
-        body: 'Post'
-      comment:
-        author: 'Autor'
-        body: 'Comentário'
+      stock_entry: 
+        date_entry: 'Data de Entrada'
+        date_invoice: 'Data da Nota Fiscal'
+        product_id: 'Produto'
+        quantity: 'Quantidade'
+        stock_id: 'Produto'
+
+      stock:
+        quantity: 'Quantidade'
+        product_id: 'Produto'
+        stock_id: 'Produto'
   
+  # formatos de data e hora
   date:
     formats:
-    default: "%d/%m/%Y"
+      default: "%d/%m/%Y"
+      short: "%d de %B"
+      long: "%d de %B de %Y"
+
+    day_names: [Domingo, Segunda, Terça, Quarta, Quinta, Sexta, Sábado]
+    abbr_day_names: [Dom, Seg, Ter, Qua, Qui, Sex, Sáb]
+    month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
+    abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez]
+    order: [day, month, year]
 
   number:
       currency:
@@ -24,3 +72,15 @@ pt-BR:
           unit: "R$"
           separator: ","
           delimiter: "."    
+          precision: 2
+          significant: false
+          strip_insignificant_zeros: false
+
+  time:
+    formats:
+      default: "%A, %d de %B de %Y, %H:%M h"
+      short: "%d/%m, %H:%M h"
+      long: "%A, %d de %B de %Y, %H:%M h"
+    am: ''
+    pm: ''
+      

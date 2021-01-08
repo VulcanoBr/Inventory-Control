@@ -61,7 +61,7 @@ class ProductsController < ApplicationController
     @product_colors = ProductColor.all.map { |color| [color.description, color.id] }
     @product_sizes = ProductSize.all.map { |size| [size.description, size.id] }
     @product_compositions = ProductComposition.all.map { |composition| [composition.description, composition.id] }
-    @suppliers = Supplier.all.map { |supplier| [supplier.supplier_name, supplier.id] }
+    @sesuppliers = Supplier.all.map { |supplier| [supplier.supplier_name, supplier.id] }
   end
 
 end

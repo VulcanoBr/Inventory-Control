@@ -30,7 +30,7 @@ class ProductColorsController < ApplicationController
     if @product_color.update(product_color_params)
       redirect_to @product_color, notice: "Cor de Produto atualizado com sucesso !!!"
     else
-      redirect_to :edit
+      redirect_to @product_color, notice: "Cor de Produto Não foi atualizado  !!!"
     end
   end
 

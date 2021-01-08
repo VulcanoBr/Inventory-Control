@@ -1,1 +1,1 @@
- Time.zone = "America/Sao_Paulo"
+Rails.application.config.time_zone = "America/Sao_Paulo"
