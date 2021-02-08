@@ -27,7 +27,7 @@
     </div>
      <div class="field">
         <%= p.label :last_unit_price, "Ultimo Preço : " %>
-        <%= p.text_field :last_unit_price %>
+        <%= p.text_field :last_unit_price, class: 'pricemask', placeholder: '0,00' %>
     </div>
     <div class="field">
         <%= p.label :description, "Descrição :" %>
@@ -37,7 +37,9 @@
 
     <br>
     <div class="action">
-        <%= p.submit "Salvar", class: 'btn btn-primary btn-sm' %>
+        <%= p.submit "Salvar", class: 'btn btn-primary btn-sm convertlastprice' %>
         <%= link_to 'Cancelar', stocks_path, class: 'btn btn-danger btn-sm' %>
     </div>
 <% end %>
+<%= javascript_pack_tag 'maskprice' %>
+<%= javascript_pack_tag 'lastpriceconvert' %>

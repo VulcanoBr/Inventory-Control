@@ -52,8 +52,8 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:id, :product_type_id, :description, :reference, :product_composition_id,
-                   :product_color_id, :product_size_id, :supplier_id, :status, :search)
+    params.require(:product).permit(:product_type_id, :description, :reference, :product_composition_id,
+                   :product_color_id, :product_size_id, :supplier_id, :status, :search, :q)
   end
 
   def prepare_form

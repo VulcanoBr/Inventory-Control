@@ -30,7 +30,7 @@ class ProductCompositionsController < ApplicationController
     if @product_composition.update(product_composition_params)
       redirect_to @product_composition, notice: "Composição de Produto atualizado com sucesso !!!"
     else
-      redirect_to :edit
+      render :edit
     end
   end
 

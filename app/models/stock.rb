@@ -3,7 +3,7 @@ class Stock < ApplicationRecord
   belongs_to :product
   
   
-  validates :product_id, presence: true, uniqueness: true
+  # validates :product_id, presence: true, uniqueness: true
 
   attribute :minimum_quantity,  default: 0
 
@@ -13,6 +13,12 @@ class Stock < ApplicationRecord
 
   validate :verificanegativo
 
+  def self.search_stock(id)
+        where(id: id)
+  end
+  
+
+  
   private
 
   def verificanegativo

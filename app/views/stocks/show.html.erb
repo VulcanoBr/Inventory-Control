@@ -20,12 +20,12 @@
 
 <p>
     <strong>Estoque Minimo:</strong>
-    <%= @stock.minimum_quantity %>
+    <%= number_with_delimiter(@stock.minimum_quantity, delimiter: ".") %>
 </p>
 
 <p>
     <strong>Quantidade:</strong>
-    <%= @stock.quantity %>
+    <%= number_with_delimiter(@stock.quantity, delimiter: ".") %>
 </p>
 
 <p>

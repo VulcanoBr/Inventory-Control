@@ -8,16 +8,22 @@ class Product < ApplicationRecord
 #  belongs_to :stock
 #  belongs_to :stock_entry
 
-def self.search(search)
-  if search
-      @parameter = search.downcase 
-      where(["lower(description) LIKE ?","%#{@parameter}%"])
-  else
-      all
+  validates :description, uniqueness: {
+    scope: [:product_type_id, :product_color_id, :product_composition_id, :product_size_id],
+    case_sensitive: false
+  }
+
+  def self.search(search)
+    if search
+        @parameter = search.downcase 
+        where(["lower(description) LIKE ?","%#{@parameter}%"])
+    else
+        all
+    end
   end
-end
 
   before_create do
     self.status = "active"
   end
+
 end

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function addMaskToPriceFields() {
-    document.querySelectorAll(".price-with-mask").forEach((input) => {
+    document.querySelectorAll(".pricemask").forEach((input) => {
       input.addEventListener("keyup", ({ target }) => {
         target.value = (target.value.replace(/\D/g, "") / 100)
           .toFixed(2)

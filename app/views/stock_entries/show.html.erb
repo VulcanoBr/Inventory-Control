@@ -4,14 +4,17 @@
 <h5>Entrada no Estoque</h5>
 
 <p>
-    <strong>Produto:</strong>
-    <%= @stock_entry.stock.product.description + ", " + @stock_entry.stock.product.product_color.description + ", " + 
-        @stock_entry.stock.product.product_composition.description + ", " + @stock_entry.stock.product.product_size.description %>
+    <strong>Fornecedor:</strong>
+    <%= @stock_entry.stock.product.supplier.supplier_name %>
 </p>
 
 <p>
-    <strong>Fornecedor:</strong>
-    <%= @stock_entry.stock.product.supplier.supplier_name %>
+    <strong>Produto:</strong>
+    <%= @stock_entry.stock.product.product_type.description + ", " + 
+        @stock_entry.stock.product.description + ", " + 
+        @stock_entry.stock.product.product_color.description + ", " + 
+        @stock_entry.stock.product.product_composition.description + ", " + 
+        @stock_entry.stock.product.product_size.description %>
 </p>
 
 <p>
@@ -35,10 +38,10 @@
 </p>
 
 <p>Quantidade:</strong>
-    <%= @stock_entry.quantity %>
+    <%= number_with_delimiter(@stock_entry.quantity, delimiter: ".") %>
 </p>
 
-<p>Preço Unitarioe:</strong>
+<p>Preço Unitario:</strong>
     <%=  number_to_currency(@stock_entry.unit_price, locale: :"pt-BR") %>
 </p>
 
@@ -53,5 +56,5 @@
 
 <br>
 <%= link_to ' Alterar ', edit_stock_entry_path(@stock_entry), class: 'btn btn-primary btn-sm' %>    
-<%= link_to ' Lista ', stock_entries_path, class: 'btn btn-warning btn-sm' %>
-<%= link_to 'Nova Entrada no Estoque', new_stock_entry_path, class: 'btn btn-info btn-sm' %>
+
+<%= link_to 'Nova Entrada no Estoque', stock_updates_path, class: 'btn btn-info btn-sm' %>

@@ -22,8 +22,8 @@
                 
                 <td><%= s.product.supplier.supplier_name %></td>
                
-                <td><%= s.minimum_quantity%> </td>
-                <td><%= s.quantity %> </td>
+                <td><%= number_with_delimiter(s.minimum_quantity, delimiter: ".") %> </td>
+                <td><%= number_with_delimiter(s.quantity, delimiter: ".") %> </td>
                 <td><%= number_to_currency(s.last_unit_price, :unit => "R$", :separator => ",", :delimiter => ".") %> </td>
                         
                 <td><%= link_to ' Visualizar ', stock_path(s),  class: 'btn btn-secondary btn-sm'  %></td>

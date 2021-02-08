@@ -10,6 +10,7 @@ class ProductColorsController < ApplicationController
   end
 
   def edit
+    @product_color = ProductColor.find(params[:id])
   end
 
   def new
@@ -30,7 +31,7 @@ class ProductColorsController < ApplicationController
     if @product_color.update(product_color_params)
       redirect_to @product_color, notice: "Cor de Produto atualizado com sucesso !!!"
     else
-      redirect_to @product_color, notice: "Cor de Produto Não foi atualizado  !!!"
+      render :edit
     end
   end
 

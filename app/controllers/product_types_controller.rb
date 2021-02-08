@@ -30,7 +30,7 @@ class ProductTypesController < ApplicationController
     if @product_type.update(product_type_params)
       redirect_to @product_type, notice: "Tipo de Produto atualizado com sucesso !!!"
     else
-      redirect_to :edit
+      render :edit
     end
   end
 

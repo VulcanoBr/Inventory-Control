@@ -30,7 +30,7 @@ class ProductSizesController < ApplicationController
     if @product_size.update(product_size_params)
       redirect_to @product_size, notice: "Tamanha de Produto atualizado com sucesso !!!"
     else
-      redirect_to :edit
+      render :edit
     end
   end
 
