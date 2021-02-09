@@ -34,7 +34,6 @@ class StockEntriesController < ApplicationController
     if @stock_entry.save
       redirect_to @stock_entry, notice: "Entrada no Estoque criado com sucesso !!! "
     else
-
       get_stock
       render :new
     end
@@ -60,7 +59,7 @@ class StockEntriesController < ApplicationController
   def set_stock_entry
     @stock_entry = StockEntry.find(params[:id])
     params[:id] = @stock_entry.stock_id
-    get_stock_entry
+    get_stock
   end
 
   private

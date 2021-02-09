@@ -1,9 +1,7 @@
 class StockEntry < ApplicationRecord
  
   belongs_to :stock
-  #belongs_to :product
-  #belongs_to :supplier
-
+ 
   validates :date_entry, :date_invoice, presence: true
   
   before_validation :update_quantity
