@@ -1,7 +1,7 @@
 <%= form_with(model: stock_entry, local: true) do |se| %>
     <% if stock_entry.errors.any? %>
         <div id="error_explanation">
-            <h2><%= pluralize(stock_entry.errors.count, "erros") %> Encontrados no preenchimento do formulario !!</h2>
+            <h6><%= pluralize(stock_entry.errors.count, "erros") %> Encontrados no preenchimento do formulario !!</h6>
 
             <ul>
                 <% stock_entry.errors.full_messages.each do |message| %>
@@ -12,13 +12,14 @@
     <% end %>
 
      <div class="field">
-        <%= se.label :stock_id, @prod %>
+        <%= se.label :stock_id, "Produto" %>
         <%= se.select :stock_id, @stockprod %>
     </div>
     
     <div class="field">
         <%= se.label :date_entry, value: @time %>
         <%= se.date_field :date_entry, max: Date.today %>
+
     </div>
 
     <div class="field">
@@ -33,7 +34,7 @@
 
     <div class="field">
         <%= se.label :quantity, "Quantidade" %>
-        <%= se.number_field :quantity %>
+        <%= se.number_field :quantity, placeholder: "0" %>
     </div>
 
     <div class="field">

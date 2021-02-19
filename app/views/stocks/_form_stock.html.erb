@@ -1,7 +1,7 @@
 <%= form_with(model: stock, local: true) do |p| %>
     <% if stock.errors.any? %>
         <div id="error_explanation">
-            <h4><%= pluralize(stock.errors.count, "error") %> probalited this stock from begin saved:</h4>
+            <h6><%= pluralize(stock.errors.count, "error") %> probalited this stock from begin saved:</h6>
 
             <ul>
                 <% stock.errors.full_messages.each do |message| %>

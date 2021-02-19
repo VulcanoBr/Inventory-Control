@@ -22,6 +22,15 @@ h5 {
     padding: 8px 10px;
     font-size: 15px;
 }
+
+h6 {
+    background-color: rgb(200, 45, 45);
+    color: #f2f2f2;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 15px;
+}
+    
     
 .field {
     padding: 10px;

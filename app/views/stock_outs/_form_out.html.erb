@@ -1,7 +1,7 @@
 <%= form_with(model: stock_out, local: true) do |so| %>
     <% if stock_out.errors.any? %>
         <div id="error_explanation">
-            <h2><%= pluralize(stock_out.errors.count, "error") %> probalited this stock_out from begin saved:</h2>
+            <h6><%= pluralize(stock_out.errors.count, "error") %> probalited this stock_out from begin saved:</h6>
 
             <ul>
                 <% stock_out.errors.full_messages.each do |message| %>
@@ -24,7 +24,7 @@
 
      <div class="field">
         <%= so.label :clientt_id, "Cliente :" %>
-        <%= so.select :client_id, @clients, include_blank: "solecione um cliente..." %> 
+        <%= so.select :client_id, @clients, include_blank: "selecione um cliente..." %> 
     </div>
 
     <div class="field">
@@ -34,7 +34,7 @@
 
     <div class="field">
         <%= so.label :quantity, "Quantidade" %>
-        <%= so.number_field :quantity %>
+        <%= so.number_field :quantity, placeholder: "0" %>
     </div>
 
     <div class="field">
@@ -45,7 +45,7 @@
     <br>
     <div class="actions">
         <%= so.submit "Salvar", class: "btn btn-primary btn-sm",  onClick: "convert();" %>
-        <%= link_to 'Cancelar', stock_outs_path, class: 'btn btn-danger btn-sm' %>
+        <%= link_to 'Cancelar', stock_updates_path, class: 'btn btn-danger btn-sm' %>
     </div>
 <% end %>
 

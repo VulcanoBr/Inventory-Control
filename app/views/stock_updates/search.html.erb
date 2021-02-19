@@ -26,7 +26,7 @@
                     <td><%= p.reference %> </td>
           
                     <td><%= link_to ' Entrada(s) ', new_stock_entry_path(id: p.id),  class: 'btn btn-secondary btn-sm'  %></td>
-                    <td><%= link_to ' Saida(s) ', new_stock_out_path(id: p.id), class: 'btn btn-success btn-sm' %></td>
+                    <td><%= link_to ' Saida(s) ', new_stock_out_path(cod: p.id), class: 'btn btn-success btn-sm' %></td>
                     <td><%= link_to ' Ajuste(s) ', p, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %> </td>
                     
                 </tr>
