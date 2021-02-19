@@ -66,9 +66,9 @@ class StockEntriesController < ApplicationController
 
   def get_stock
     
-    if params[:id]
+    if params[:cod]
 
-      @stockprod = Stock.where(product_id: params[:id]).map do |stock| 
+      @stockprod = Stock.where(product_id: params[:cod]).map do |stock| 
         description = [
           stock.product.supplier.supplier_name,
           stock.product.product_type.description,

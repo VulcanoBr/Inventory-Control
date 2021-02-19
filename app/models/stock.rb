@@ -13,8 +13,8 @@ class Stock < ApplicationRecord
 
   validate :verificanegativo
 
-  def self.search_stock(id)
-      where(product_id: id)
+  def self.search_stock(cod)
+      where(product_id: cod)
       
   end
   
