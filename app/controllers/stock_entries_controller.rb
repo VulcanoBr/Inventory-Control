@@ -65,25 +65,24 @@ class StockEntriesController < ApplicationController
   end
 
   def get_stock
-    
-    if params[:cod]
-
-      @stockprod = Stock.where(product_id: params[:cod]).map do |stock| 
+    stock_list = Stock.all
+    stock_list.where!(product_id: params[:id]) 
+    if params[:id]    
+      @stockprod = stock_list.map do |stock|
         description = [
           stock.product.supplier.supplier_name,
           stock.product.product_type.description,
           stock.product.description,
           stock.product.product_color.description,
-          stock.product.product_composition.description, 
-          stock.product.product_size.description].join(", ") 
-          @detalhe = description
-          @qtd = stock.quantity
-          [description, stock.quantity, stock.id]
+          stock.product.product_composition.description,
+          stock.product.product_size.description
+        ].join(", ")      
+        [description, stock.id]
       end
-    else
-      @stockprod = Stock.all
     end
   end
+
+ 
 
   def stock_entry_params
     params.require(:stock_entry).permit(:id, :date_invoice, :invoice, :quantity, :unit_price, :date_entry, :description, :stock_id, :q, :product_id, :cod)
