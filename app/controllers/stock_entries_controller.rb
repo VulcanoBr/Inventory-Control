@@ -66,8 +66,7 @@ class StockEntriesController < ApplicationController
 
   def get_stock
     stock_list = Stock.all
-    stock_list.where!(product_id: params[:id]) 
-    if params[:id]    
+    stock_list.where!(product_id: params[:id])  if params[:id]    
       @stockprod = stock_list.map do |stock|
         description = [
           stock.product.supplier.supplier_name,
@@ -79,7 +78,7 @@ class StockEntriesController < ApplicationController
         ].join(", ")      
         [description, stock.id]
       end
-    end
+    
   end
 
  
