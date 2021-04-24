@@ -31,6 +31,19 @@ h6 {
     font-size: 15px;
 }
     
+input:invalid {
+    border-color: 2px solid red;
+}
+
+.field_with_errors {
+    padding: 2px;
+    background-color: rgb(246, 184, 184);
+    display: inline-block; 
+}
+
+.field_with_errors input {
+    border: 2px solid red;
+}
     
 .field {
     padding: 10px;

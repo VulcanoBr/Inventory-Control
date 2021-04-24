@@ -1,9 +1,10 @@
 class StockEntriesController < ApplicationController
 
   before_action :get_stock_entry, only: [:show, :edit, :update, :destroy]
+  before_action :prepare_form_type_entry
  
   def index
-    prepare_form_supplier
+    #prepare_form_supplier
 
     @stock_entries = StockEntry.all
     
@@ -14,7 +15,7 @@ class StockEntriesController < ApplicationController
   end
 
   def new
-    
+    prepare_form_type_entry
     @stock_entry = StockEntry.new
     
     get_stock
@@ -60,13 +61,14 @@ class StockEntriesController < ApplicationController
 
   def get_stock_entry
     @stock_entry = StockEntry.find(params[:id])
-#    params[:cod] = @stock_entry.stock_id
+    prepare_form_type_entry
+    params[:entry_cod] = @stock_entry.stock_id
     get_stock
   end
 
   def get_stock
     stock_list = Stock.all
-    stock_list.where!(product_id: params[:id])  if params[:id]    
+    stock_list.where!(product_id: params[:entry_cod])  if params[:entry_cod]    
       @stockprod = stock_list.map do |stock|
         description = [
           stock.product.supplier.supplier_name,
@@ -84,12 +86,17 @@ class StockEntriesController < ApplicationController
  
 
   def stock_entry_params
-    params.require(:stock_entry).permit(:id, :date_invoice, :invoice, :quantity, :unit_price, :date_entry, :description, :stock_id, :q, :product_id, :cod)
+    params.require(:stock_entry).permit(:id, :date_invoice, :invoice, :quantity, :unit_price, :date_entry, :description, :stock_id, :type_entry, :q, :product_id, :entry_cod)
   end
   
   def prepare_form_supplier
     @sesuppliers = Supplier.order(:supplier_name).all.map { |supplier| [supplier.supplier_name, supplier.id] }
     
   end
+
+  def prepare_form_type_entry
+    @typeentries = [["Material de Fornecedor", 1], ["Retorno para Estoque", 2], ["Devolução de Cliente", 3], ["Material Fabricado", 4]]
+  end
+
   
 end

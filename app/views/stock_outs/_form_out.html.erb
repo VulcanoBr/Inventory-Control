@@ -11,8 +11,13 @@
         </div>
     <% end %>
 
+    
     <div class="field">
-        
+        <%= so.label :stock_id, "Produto" %>
+        <%= so.select :stock_id, @stockprod, disabled: true %>
+    </div>
+
+    <div class="field">        
         <%= so.label :date_out, "Data da Saida" %>
         <%= so.date_field :date_out, max: Date.today %>
     </div>
@@ -25,11 +30,6 @@
      <div class="field">
         <%= so.label :clientt_id, "Cliente :" %>
         <%= so.select :client_id, @clients, include_blank: "selecione um cliente..." %> 
-    </div>
-
-    <div class="field">
-        <%= so.label :product_id, "Produto :" %>
-        <%= so.select :stock_id, @stocks, include_blank: "solecione um produto..." %> 
     </div>
 
     <div class="field">

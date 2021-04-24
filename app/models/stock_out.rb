@@ -14,7 +14,7 @@ class StockOut < ApplicationRecord
     else 
         if quantity > 0
             new_quantity = stock.quantity - quantity
-            stock.update(quantity: new_quantity, last_unit_price: new_price)
+            stock.update(quantity: new_quantity)
         else
           errors.add(:quantity.to_s, ", Quantidade Nâo Pode ser menor que 1")
         end

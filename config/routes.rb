@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :stock_updates
   resources :stock_entries
   resources :stock_outs
+  resources :stock_adjustments, only: [:edit]
   get 'search', to: 'stock_updates#search'
 
 

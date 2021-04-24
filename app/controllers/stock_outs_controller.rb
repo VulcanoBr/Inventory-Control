@@ -6,13 +6,14 @@ class StockOutsController < ApplicationController
   end
 
   def show
-    prepare_form_stock_out
+   # prepare_form_stock_out
 
   end
 
   def new
     prepare_form_stock_out
     @stock_out = StockOut.new
+    get_stock
   end
 
   def edit
@@ -26,6 +27,7 @@ class StockOutsController < ApplicationController
       redirect_to @stock_out, notice: "Saida do Estoque criado com sucesso !!! "
     else
       prepare_form_stock_out
+      get_stock
       render :new
     end
   end
@@ -50,15 +52,31 @@ class StockOutsController < ApplicationController
     @stock_out = StockOut.find(params[:id])
   end
 
+  def get_stock
+    stock_list = Stock.all
+    stock_list.where!(product_id: params[:ou_cod])  if params[:out_cod]    
+      @stockprod = stock_list.map do |stock|
+        description = [
+          stock.product.supplier.supplier_name,
+          stock.product.product_type.description,
+          stock.product.description,
+          stock.product.product_color.description,
+          stock.product.product_composition.description,
+          stock.product.product_size.description
+        ].join(", ")      
+        [description, stock.id]
+      end
+  end  
+
   def stock_out_params
-    params.require(:stock_out).permit(:id, :order_number, :client_id, :quantity, :date_out, :description, :stock_id)
+    params.require(:stock_out).permit(:id, :order_number, :client_id, :quantity, :date_out, :description, :stock_id, :type_out, :product_id, :out_cod, :q)
   end
 
   def prepare_form_stock_out
-    @stocks = Stock.all.map { |stock| [stock.product.supplier.supplier_name + " " + stock.product.reference + " " + 
-      stock.product.description + " " + stock.product.product_color.description + " " +
-      stock.product.product_composition.description + " " + stock.product.product_size.description, 
-      stock.quantity, stock.id] }
+   # @stocks = Stock.all.map { |stock| [stock.product.supplier.supplier_name + " " + stock.product.reference + " " + 
+   #   stock.product.description + " " + stock.product.product_color.description + " " +
+    #  stock.product.product_composition.description + " " + stock.product.product_size.description, 
+    #  stock.quantity, stock.id] }
 
     @clients = Client.all.map {|client| [client.client_name , client.id]}
   end

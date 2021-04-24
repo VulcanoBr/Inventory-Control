@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_12_191413) do
+ActiveRecord::Schema.define(version: 2021_04_15_014912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_191413) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "type_entry"
     t.index ["stock_id"], name: "index_stock_entries_on_stock_id"
   end
 
@@ -150,6 +151,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_191413) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "type_out"
     t.index ["client_id"], name: "index_stock_outs_on_client_id"
     t.index ["stock_id"], name: "index_stock_outs_on_stock_id"
   end

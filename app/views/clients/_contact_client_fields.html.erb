@@ -12,7 +12,7 @@
         <div class="field" >
             <%= f.label :telephone, "Telefone :" %>
             <%= f.text_field :telephone, class: "phone-with-mask", placeholder: "(99)9999-9999", maxlength: "14" %>
-             
+            <%= javascript_pack_tag 'masktel' %>
         </div>
         <div class="field" >
             <%= f.label :cell_phone, "Celular :" %>
@@ -26,8 +26,7 @@
 
         <%= link_to_remove_association "Excluir Contato", f %>  
 
-    </div>
-    <%= javascript_pack_tag "masktel" %>
+    
 
 </div>
 <br>
