@@ -2,6 +2,8 @@ pt-BR:
 
   activerecord:
     errors:
+      # format to use in full error messages.
+      format: "%{message} %{attribute}"
       messages:
         record_invalid: 'A validação falhou: %{errors}'
         restrict_dependent_destroy:

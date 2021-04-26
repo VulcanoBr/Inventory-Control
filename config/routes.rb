@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :stock_outs
   resources :stock_adjustments, only: [:edit]
   get 'search', to: 'stock_updates#search'
-
+  # get 'clients/masktel'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

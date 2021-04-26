@@ -24,4 +24,4 @@ import 'cocoon';
 //import $ from 'jquery';
 //global.$ = $;
 
-require("cpf_cnpj")
+// require("cpf_cnpj")

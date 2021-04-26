@@ -2,6 +2,7 @@ class StockEntriesController < ApplicationController
 
   before_action :get_stock_entry, only: [:show, :edit, :update, :destroy]
   before_action :prepare_form_type_entry
+  before_action :get_stock  #, only: [:creat, :new, :edit]
  
   def index
     #prepare_form_supplier
@@ -18,7 +19,7 @@ class StockEntriesController < ApplicationController
     prepare_form_type_entry
     @stock_entry = StockEntry.new
     
-    get_stock
+    #get_stock
   
   end
 
@@ -35,7 +36,7 @@ class StockEntriesController < ApplicationController
       redirect_to @stock_entry, notice: "Entrada no Estoque criado com sucesso !!! "
     else 
 
-      get_stock
+     # get_stock
       
       render  :new
       
@@ -95,7 +96,7 @@ class StockEntriesController < ApplicationController
   end
 
   def prepare_form_type_entry
-    @typeentries = [["Material de Fornecedor", 1], ["Retorno para Estoque", 2], ["Devolução de Cliente", 3], ["Material Fabricado", 4]]
+    @typeentries = [["Material de Fornecedor", 0], ["Retorno para Estoque", 1], ["Devolução de Cliente", 2], ["Material Fabricado", 3]]
   end
 
   

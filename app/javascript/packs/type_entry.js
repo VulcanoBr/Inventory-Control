@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    alert("estou aqui");
     addTypeEntryDocumentField();
 });
 
@@ -32,23 +33,27 @@ function client_return() {
 }
 
 function addTypeEntryDocumentField() {
+        alert("2");
       document.querySelectorAll(".type_entry").forEach((select) => {
-      select.addEventListener("change", ({ target }) => {
-        var result = select.options[select.selectedIndex].text;
+         var x = document.getElementsByTagName["input[name='stock_entry[type_entry]']"];
+        
+          alert (x);
+        select.addEventListener("change", ({ target }) => {
+        var result = select.options[select.selectedIndex].value;
         
         document.querySelector("input[name='stock_entry[type_entry]']").value = result;
             switch (target.value) {
-            case "1":
+            case "0":
                 document.querySelector("input[name='stock_entry[description]']").value = "Esdtou aqui";
            //     document.querySelector("input[name='stock_entry[type_entry]']").value = result;
                 // document.getElementsByTagName('input').reset();
                 break;
     
-            case "2":
+            case "1":
                 stock_return();
             //    document.querySelector("input[name='stock_entry[type_entry]']").value = result;
                 break;
-            case "3":
+            case "2":
                 client_return();
             //    document.querySelector("input[name='stock_entry[type_entry]']").value = result;
                 break;

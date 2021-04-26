@@ -8,11 +8,11 @@ class Product < ApplicationRecord
 #  belongs_to :stock
 #  belongs_to :stock_entry
 
-  validates :description, uniqueness: {
+  
+validates :description, uniqueness: {
     scope: [:product_type_id, :product_color_id, :product_composition_id, :product_size_id],
-    case_sensitive: false
+    case_sensitive: false, message: "Produto já existe"
   }
-
   def self.search(search)
     if search
         @parameter = search.downcase 

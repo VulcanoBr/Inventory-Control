@@ -24,7 +24,7 @@
 
 <p>
     <strong>Tipo de Entrada:</strong>
-    <%= @stock_entry.type_entry %>
+    <%= @typeentries[@stock_entry.type_entry.to_i][0] %>
 </p>
 
 <p>
