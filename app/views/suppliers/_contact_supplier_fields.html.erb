@@ -12,12 +12,12 @@
         <div class="field" >
             <%= f.label :telephone, "Telefone :" %>
             <%= f.text_field :telephone, class: "phone-with-mask", placeholder: "(99)9999-9999", maxlength: "14"  %> 
-             <%= javascript_pack_tag "masktel" %>
+             
         </div>
         <div class="field" >
             <%= f.label :cell_phone, "Celular :" %>
             <%= f.text_field :cell_phone, class: "phone-with-mask", placeholder: "(99)99999-9999", maxlength: "15" %>
-             <%= javascript_pack_tag "masktel" %>
+             
         </div>
         <div class="field">
             <%= f.label :description, "Observação :" %>

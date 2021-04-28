@@ -23,7 +23,17 @@
             include_blank: "Selecione um tipo de entrada", class: 'type_entry') %>  -->
      <!--  <%= select_tag :type_entry, options_for_select(@typeentries, 
             selected: params[:type_entry]), include_blank: "Selecione um tipo de entrada", class: 'type_entry' %> -->
-            <%= se.select :type_entry, options_for_select(@typeentries, selected: params[:type_entry]), class: 'type_entry', include_blank: "Selecione um tipo de entrada" %>
+            <%= se.select :type_entry,  @typeentries, selected: params[:type_entry], class: 'typesentries', include_blank: "Selecione um tipo de entrada" %>
+    </div>
+
+     <div class="field">
+        <%= se.label :type_entry, "Tipo da Entrada " %>
+            <%= se.hidden_field :type_entry %> 
+    <!--    <%= select_tag(:type_entry, options_for_select([['Material Fornecedor', 1], ['Retorno para Estoque', 2], ['Devolução Cliente', 3]], selected: params[:type_entry]), 
+            include_blank: "Selecione um tipo de entrada", class: 'type_entry') %>  -->
+            <%= select_tag :type_entry, options_for_select(@typeentries, 
+            selected: params[:type_entry]), include_blank: "Selecione um tipo de entrada", class: 'typesentries' %> 
+    <!--        <%= se.select :type_entry,  @typeentries, selected: params[:type_entry], class: 'typesentries', include_blank: "Selecione um tipo de entrada" %>  -->
     </div>
     
     <div class="field">
@@ -66,6 +76,6 @@
 <% end %>
 <%= javascript_pack_tag 'maskprice' %>
 <%= javascript_pack_tag 'convertprice' %>
-<%= javascript_pack_tag 'type_entry' %>
+<%= javascript_pack_tag 'typeentry' %>
 
 

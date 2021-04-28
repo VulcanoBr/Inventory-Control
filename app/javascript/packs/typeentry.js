@@ -33,14 +33,12 @@ function client_return() {
 }
 
 function addTypeEntryDocumentField() {
-        alert("2");
-      document.querySelectorAll(".type_entry").forEach((select) => {
-         var x = document.getElementsByTagName["input[name='stock_entry[type_entry]']"];
-        
-          alert (x);
+    
+      document.querySelectorAll(".typesentries").forEach((select) => {
+         
         select.addEventListener("change", ({ target }) => {
         var result = select.options[select.selectedIndex].value;
-        
+        alert(result);
         document.querySelector("input[name='stock_entry[type_entry]']").value = result;
             switch (target.value) {
             case "0":
