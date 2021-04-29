@@ -19,7 +19,7 @@ import 'bootstrap';
 import '../src/application.css';
 import '../src/style_navbar.css';
 
-import 'cocoon';
+import "cocoon-js-vanilla";
 
 //import $ from 'jquery';
 //global.$ = $;
