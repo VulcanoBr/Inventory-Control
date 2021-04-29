@@ -1,10 +1,7 @@
-
-document.addEventListener("DOMContentLoaded", () => {
-  addMaskToPhoneFields();
-});
+document.addEventListener("DOMContentLoaded", addMaskToPhoneFields);
+$(".links").on("cocoon:after-insert", addMaskToPhoneFields);
 
 function addMaskToPhoneFields() {
-  
   document.querySelectorAll(".phone-with-mask").forEach((input) => {
     input.addEventListener("keyup", ({ target }) => {
       target.value = target.value
