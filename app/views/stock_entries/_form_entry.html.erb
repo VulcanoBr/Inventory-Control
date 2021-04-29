@@ -16,15 +16,15 @@
         <%= se.select :stock_id, @stockprod, disabled: true %>
     </div>
 
-    <div class="field">
-        <%= se.label :type_entry, "Tipo da Entrada " %>
+ <!--   <div class="field">
+        <%= se.label :type_entry, "Tipo da Entrada " %>  -->
      <!--   <%= se.hidden_field :type_entry %>  -->
     <!--    <%= select_tag(:type_entry, options_for_select([['Material Fornecedor', 1], ['Retorno para Estoque', 2], ['Devolução Cliente', 3]], selected: params[:type_entry]), 
             include_blank: "Selecione um tipo de entrada", class: 'type_entry') %>  -->
      <!--  <%= select_tag :type_entry, options_for_select(@typeentries, 
             selected: params[:type_entry]), include_blank: "Selecione um tipo de entrada", class: 'type_entry' %> -->
-            <%= se.select :type_entry,  @typeentries, selected: params[:type_entry], class: 'typesentries', include_blank: "Selecione um tipo de entrada" %>
-    </div>
+        <!--    <%= se.select :type_entry,  @typeentries, selected: params[:type_entry], class: 'typesentries', include_blank: "Selecione um tipo de entrada" %> -->
+  <!--  </div>  -->
 
      <div class="field">
         <%= se.label :type_entry, "Tipo da Entrada " %>

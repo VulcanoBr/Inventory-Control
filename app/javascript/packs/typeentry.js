@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    alert("estou aqui");
     addTypeEntryDocumentField();
 });
 
@@ -24,7 +23,8 @@ function stock_return() {
 };
 
 function client_return() {
-    var data = new Date().toISOString().slice(0, 10);
+    var data = new Date();
+    data = (adicionaZero(data.getFullYear().toString()) + "-" + (adicionaZero(data.getMonth()+1).toString()) + "-" + data.getDate());
     document.querySelector("input[name='stock_entry[date_entry]']").value = data;
     document.querySelector("input[name='stock_entry[date_invoice]']").value = data;
     document.querySelector("input[name='stock_entry[unit_price]']").value = 0.01;
@@ -38,7 +38,7 @@ function addTypeEntryDocumentField() {
          
         select.addEventListener("change", ({ target }) => {
         var result = select.options[select.selectedIndex].value;
-        alert(result);
+        
         document.querySelector("input[name='stock_entry[type_entry]']").value = result;
             switch (target.value) {
             case "0":
