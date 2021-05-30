@@ -4,23 +4,29 @@
 
 <p>
     <strong>Produto:</strong>
-    <%= @stock_out.stock.product.description + ", " + @stock_out.stock.product.product_color.description + ", " + 
-        @stock_out.stock.product.product_composition.description + ", " + @stock_out.stock.product.product_size.description %>
+    <%= [@stock_out.stock.product.description, @stock_out.stock.product.product_color.description, 
+         @stock_out.stock.product.product_composition.description, 
+         @stock_out.stock.product.product_size.description].join(", ") %>
 </p>
 
 <p>
     <strong>Fornecedor:</strong>
-    <%= @stock_out.stock.product.supplier.supplier_name %>
+    <%= @stock_out.stock.supplier.supplier_name %>
 </p>
 
 <p>
     <strong>Referencia:</strong>
-    <%= @stock_out.stock.product.reference %>
+    <%= @stock_out.stock.reference %>
+</p>
+
+<p>
+    <strong>Tipo de Saidaa:</strong>
+    <%= @typeouts[@stock_out.type_out.to_i][0] %>
 </p>
 
 <p>
     <strong>Data da Saida:</strong>
-        <%= @stock_out.date_out.strftime("%d/%m/%Y") %>
+    <%= @stock_out.date_out.strftime("%d/%m/%Y") %>
 </p>
 
 <p>
@@ -48,5 +54,5 @@
 
 <br>
 <%= link_to ' Alterar ', edit_stock_out_path(@stock_out), class: 'btn btn-primary btn-sm' %>    
-
 <%= link_to 'Nova Saida do Estoque', stock_updates_path, class: 'btn btn-info btn-sm' %>
+<%= link_to 'Sair', homes_path, class: 'btn btn-dark btn-sm' %>

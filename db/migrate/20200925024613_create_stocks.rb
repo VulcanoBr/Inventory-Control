@@ -5,7 +5,9 @@ class CreateStocks < ActiveRecord::Migration[6.0]
       t.integer :quantity
       t.decimal :last_unit_price
       t.string :description
+      t.string :reference
       t.references :product, null: false, foreign_key: true
+      t.references :supplier, null: false, foreign_key: true
 
       t.timestamps
     end

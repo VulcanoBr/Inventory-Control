@@ -1,9 +1,11 @@
 class ProductTypesController < ApplicationController
+
+  include Paginable
    
   before_action :set_produtct_type, only: [:show, :edit, :update, :destroy]
 
   def index
-    @product_types = ProductType.all
+    @product_types = ProductType.all.page(current_page).per(per_page)
   end
 
   def show
@@ -18,7 +20,6 @@ class ProductTypesController < ApplicationController
 
   def create
     @product_type = ProductType.new(product_type_params)
-
     if @product_type.save
       redirect_to @product_type, notice: "Tipo de Produto criado com sucesso !!!"
     else

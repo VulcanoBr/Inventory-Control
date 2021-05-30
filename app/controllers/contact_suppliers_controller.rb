@@ -8,7 +8,6 @@ class ContactSuppliersController < ApplicationController
   end
 
   def show
-    
   end
 
   private

@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
 <h5>Lista de Tamanhos de Produtos</h5>
 
+<div class="pagination justify-content-end">
+        <%= link_to_prev_page @product_sizes, '<< Pagina Anterior' %>
+        <%= link_to_next_page @product_sizes, 'Proxima Pagina >>' %>
+</div>
+
 <%= render "layouts/principal", resource: @product_sizes %>

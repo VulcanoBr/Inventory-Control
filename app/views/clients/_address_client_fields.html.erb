@@ -5,26 +5,32 @@
             <%= f.label :street, "Rua :" %>
             <%= f.text_field :street %>
         </div>
+
         <div class="field" >
             <%= f.label :number, "Numero :" %>
             <%= f.text_field :number %>
         </div>
+
         <div class="field" >
             <%= f.label :complement, "Complemento :" %>
             <%= f.text_field :complement %>  
         </div>
+
         <div class="field" >
             <%= f.label :neighborhood, "Bairro :" %>
             <%= f.text_field :neighborhood %>
         </div>
+
         <div class="field">
             <%= f.label :city, "Cidade :" %>
             <%= f.text_field :city %>
         </div>
+
         <div class="field">
             <%= f.label :state, "Estado :" %>
-            <%= f.text_field :state %>
+            <%= f.select :state, Brazil.states, include_blank: "Selecione um Estado" %>
         </div>
+        
         <div class="field">
             <%= f.label :zip_code, "Codigo Postal :" %>
             <%= f.text_field :zip_code %>

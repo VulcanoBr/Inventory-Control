@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h5>Lista dos produtos no  Estoque</h5>
+
+<%= form_with(url: '/report', method: 'get', local: true, 
+    class: 'navbar-form navbar-left navbar-dark bg-dark') do %>  
+    
+        <%= label_tag :q, " Selecionar um Tipo " %>
+        <%= select_tag :q,
+            options_for_select(@product_types), include_blank: true %>
+    
+        <%= submit_tag " Pesquisar Produto(s) ", class: 'fas fa-search' %> 
+    
+<% end %>
+<br>
+
+<%= link_to 'Sair', homes_path, class: 'btn btn-dark btn-sm' %>

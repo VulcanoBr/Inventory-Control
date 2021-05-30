@@ -1,9 +1,11 @@
 class ClientsController < ApplicationController
 
+  include Paginable
+
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   def index
-    @clients = Client.search(params[:search])
+    @clients = Client.search(params[:search]).page(current_page).per(per_page)
   end
 
   def show
@@ -19,7 +21,6 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
-
     if @client.save
       redirect_to @client, notice: "Cliente Cadastrado com sucesso !!!"
     else

@@ -1,9 +1,17 @@
 pt-BR:
 
+  views:
+    pagination:
+      first: "&laquo; Primeira "
+      last: " Ultima &raquo;"
+      previous: "&lsaquo; Anterior "
+      next: " Proxima &rsaquo;"
+      truncate: "&hellip;"
+
   activerecord:
     errors:
       # format to use in full error messages.
-      format: "%{message} %{attribute}"
+      format: '%{messages} %{attributes}'
       messages:
         record_invalid: 'A validação falhou: %{errors}'
         restrict_dependent_destroy:
@@ -38,21 +46,125 @@ pt-BR:
         body: "Por favor, verifique o(s) seguinte(s) campo(s):"
 
     models:
+      product: 'Produto'
       stock_entry: 'Entrada no Estoque'
       stock: 'Estoque'
+      stock_out: 'Saida do Estoque'
+      product_color: 'Cor'
+      product_size: 'Medida'
+      product_composition: 'Composição'
+      product_type: 'Tipo'
+      client: 'Cliente'
+      contact_client: 'Contato Cliente'
+      address_client: 'Endereço Cliente'
+      supplier: 'Fornecedor'
+      contact_supplier: 'Contato Forncedor'
+      address_supplier: 'Endereço Fornecedor'
 
     attributes:
+      product:
+        product_id: 'Produto'
+        product_type: 'Tipo de Produto'
+        product_size: 'Tamanh'
+        product_composition: 'Composição'
+        product_color: 'Cor'
+        supplier: 'Fornecedor'
+        description: 'Descrição'
+
       stock_entry: 
         date_entry: 'Data de Entrada'
         date_invoice: 'Data da Nota Fiscal'
         product_id: 'Produto'
         quantity: 'Quantidade'
         stock_id: 'Produto'
+        invoice: 'Nota Fiscal'
+        unir_price: 'Preço Unitario'
+        description: 'Observação'
+        type_entry: 'Tipo de Entrada'
 
       stock:
         quantity: 'Quantidade'
         product_id: 'Produto'
         stock_id: 'Produto'
+        minimum_quantity: 'Quantidade Minima'
+        last_unit_price: 'Ultimo Preço'
+        description: 'Observação'
+        status: 'Status'
+        supplier: 'Fornecedor'
+        supplier_id: 'Fornecedor'
+        reference: 'Referencia'
+
+      stock_out:
+        order_number: 'Pedido'
+        client_id: 'Cliente'
+        date_out: 'Data da Saida'
+        stock_id: 'Produto'
+        quantity: 'Quantidade'
+        description: 'Onservação'
+        type_out: 'Tipo de Saida'
+        client: 'Cliente'
+      
+      product_color:
+        description: 'Descrição'
+
+      product_size:
+        description: 'Descrição'
+
+      product_type:
+        description: 'Descrição'
+
+      product_composition:
+        description: 'Descrição'
+
+      product_type: 
+        description: 'Descrição'
+
+      client:
+        client_name: 'Nome'
+        identification: 'Identificação'
+        description: 'Observação'
+        client: 'Cliente'
+
+      contact_clients:
+        client_name: 'Nome'
+        email: 'Email'
+        telephone: 'Telefone'
+        cell_phone: 'Celular'
+        description: 'Observação'
+        client_id: 'Cliente'
+
+      address_clients:
+        street: 'Endereço'
+        number: 'Numero'
+        complement: 'Complemento'
+        neighborhood: 'Bairro'
+        city: 'Cidade'
+        state: 'Estado'
+        zip_code: 'CEP'
+        client_id: 'Clente'
+
+      supplier:
+        supplier_name: 'Nome'
+        identification: 'Identificação'
+        description: 'Observação'
+
+      contact_suppliers:
+        supplier_name: 'Nome'
+        email: 'Email'
+        telephone: 'Telefone'
+        cell_phone: 'Celular'
+        description: 'Observação'
+        supplier_id: 'Fornecedor'
+
+      address_suppliers:
+        street: 'Endereço'
+        number: 'Numero'
+        complement: 'Complemento'
+        neighborhood: 'Bairro'
+        city: 'Cidade'
+        state: 'Estado'
+        zip_code: 'CEP'
+        supplier_id: 'Fornecedor'
   
   # formatos de data e hora
   date:

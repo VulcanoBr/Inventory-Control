@@ -1,6 +1,6 @@
 class Supplier < ApplicationRecord
 
-    belongs_to :product
+    has_many :products
 
     has_many :contact_suppliers, dependent: :destroy # possui muitod  endereços
     accepts_nested_attributes_for :contact_suppliers, reject_if: :all_blank, allow_destroy: true

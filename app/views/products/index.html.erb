@@ -1,35 +1,34 @@
 <p id="notice"><%= notice %></p>
 <h5>Lista de Produto(s)</h5>
 
-<br>
-<%= form_with(url: '/products', method: :get, local: true) do %>
-  <%= text_field_tag (:search) %>
-  <%= submit_tag "Pesquisar", class: "btn btn-info glyphicon glyphicon-search btn-sm" %>
-<% end %>
-<br>
+<div class="row">    
+    <%= form_with(url: '/products', method: :get, local: true) do %>
+        <div class="column">  
+            <p> <%= text_field_tag (:search) %>
+                <%= submit_tag "Pesquisar", class: "btn btn-info btn-sm" %> 
+            </p>  
+        </div>
+    <% end %> 
+        <div  class="column pagination justify-content-end mt-2"> <p> <%= link_to_prev_page @products, '<< Pagina Anterior'  %>
+            <%= link_to_next_page @products, 'Proxima Pagina >>' %> </p>
+        </div>
+</div>
 
 <table>
     <thead>
         <tr>
             <th>Produto</th>
-            <th>Fornecedor</th>
-            <th>Referencia</th>
         </tr>
     </thead>
 
     <tbody>
         <% @products.each do |p| %>
             <tr>
-                <td><%= p.product_type.description + ", " + p.description + ", " + p.product_composition.description +
-                        ", " + p.product_color.description + ", " + p.product_size.description %></td>
-                
-                <td><%= p.supplier.supplier_name %></td>
-                <td><%= p.reference %> </td>
-                        
+                <td><%= [p.product_type.description, p.description, p.product_composition.description,
+                         p.product_color.description, p.product_size.description].join(", ") %></td>
                 <td><%= link_to ' Visualizar ', product_path(p),  class: 'btn btn-secondary btn-sm'  %></td>
                 <td><%= link_to ' Alterar ', edit_product_path(p), class: 'btn btn-success btn-sm' %></td>
                 <td><%= link_to ' Excluir ', p, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %> </td>
-                
             </tr>
         <% end %>
     </tbody>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'reports/index'
   get 'stock_updates/index'
   # get 'adress_suppliers/show'
   root 'homes#index'
@@ -21,7 +22,10 @@ Rails.application.routes.draw do
   resources :stock_entries
   resources :stock_outs
   resources :stock_adjustments, only: [:edit]
+  resources :reports
   get 'search', to: 'stock_updates#search'
+  get 'report', to: 'reports#report'
+  get 'withoutstock', to: 'reports#withoutstock'
   # get 'clients/masktel'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

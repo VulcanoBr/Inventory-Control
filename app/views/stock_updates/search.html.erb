@@ -4,32 +4,27 @@
         <thead>
             <tr>
                 <th>Produto</th>
-                
                 <th>Referencia</th>
-               
-                
             </tr>
         </thead>
 
         <tbody>
             <% a = 0 %>
-            <% @results.each do |p| %>
-            <% if a < 1 %>
-                    <h5>Lista de Produto(s) da <%= p.supplier.supplier_name %></h5>
-                    <% a = 1 %>
-            <% end %>
+            <% @results.each do |s| %>
+                <% if a < 1 %>
+                        <h5>Lista de Produto(s) da <%= s.supplier.supplier_name %></h5>
+                        <% a = 1 %>
+                <% end %>
                 <tr>
-                    <td><%= p.product_type.description + ", " + p.description + ", " + p.product_composition.description +
-                        ", " + p.product_color.description + ", " + p.product_size.description %></td>
-                
-               
-                    <td><%= p.reference %> </td>
+                    <td><%= [s.product.product_type.description, s.product.description, 
+                             s.product.product_composition.description,
+                             s.product.product_color.description, 
+                             s.product.product_size.description].join(", ") %></td>
+                    <td><%= s.reference %> </td>
           
-                    <td><%= link_to ' Entrada(s) ', new_stock_entry_path(entry_cod: p.id),  class: 'btn btn-secondary btn-sm'  %></td>
-                    <td><%= link_to ' Saida(s) ', new_stock_out_path(out_cod: p.id), class: 'btn btn-success btn-sm' %></td>
-                    <td><%= link_to ' Retorno ', edit_stock_path(p), class: 'btn btn-danger btn-sm' %> </td>
-                    <td><%= link_to ' Devolução ', edit_stock_path(p), class: 'btn btn-danger btn-sm' %> </td>
-                    
+                    <td><%= link_to ' Entrada(s) ', new_stock_entry_path(entry_cod: s.id),  class: 'btn btn-secondary btn-sm'  %></td>
+                    <td><%= link_to ' Saida(s) ', new_stock_out_path(out_cod: s.id), class: 'btn btn-success btn-sm' %></td>
+                    <td><%= link_to ' Ajuste ', edit_stock_path(s, prod_id: s.id), class: 'btn btn-danger btn-sm' %> </td>  
                 </tr>
             <% end %>
         </tbody>

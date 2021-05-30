@@ -1,7 +1,7 @@
 <%= form_with(model: stock_entry, local: true) do |se| %>
     <% if stock_entry.errors.any? %>
         <div id="error_explanation">
-            <h6><%= pluralize(stock_entry.errors.count, "erros") %> Encontrados no preenchimento do formulario !!</h6>
+            <h6><%= pluralize(stock_entry.errors.count, "erro(s)") %> Encontrado(s) no preenchimento do formulario !!</h6>
 
             <ul>
                 <% stock_entry.errors.full_messages.each do |message| %>
@@ -16,30 +16,14 @@
         <%= se.select :stock_id, @stockprod, disabled: true %>
     </div>
 
- <!--   <div class="field">
-        <%= se.label :type_entry, "Tipo da Entrada " %>  -->
-     <!--   <%= se.hidden_field :type_entry %>  -->
-    <!--    <%= select_tag(:type_entry, options_for_select([['Material Fornecedor', 1], ['Retorno para Estoque', 2], ['Devolução Cliente', 3]], selected: params[:type_entry]), 
-            include_blank: "Selecione um tipo de entrada", class: 'type_entry') %>  -->
-     <!--  <%= select_tag :type_entry, options_for_select(@typeentries, 
-            selected: params[:type_entry]), include_blank: "Selecione um tipo de entrada", class: 'type_entry' %> -->
-        <!--    <%= se.select :type_entry,  @typeentries, selected: params[:type_entry], class: 'typesentries', include_blank: "Selecione um tipo de entrada" %> -->
-  <!--  </div>  -->
-
-     <div class="field">
+    <div class="field">
         <%= se.label :type_entry, "Tipo da Entrada " %>
-            <%= se.hidden_field :type_entry %> 
-    <!--    <%= select_tag(:type_entry, options_for_select([['Material Fornecedor', 1], ['Retorno para Estoque', 2], ['Devolução Cliente', 3]], selected: params[:type_entry]), 
-            include_blank: "Selecione um tipo de entrada", class: 'type_entry') %>  -->
-            <%= select_tag :type_entry, options_for_select(@typeentries, 
-            selected: params[:type_entry]), include_blank: "Selecione um tipo de entrada", class: 'typesentries' %> 
-    <!--        <%= se.select :type_entry,  @typeentries, selected: params[:type_entry], class: 'typesentries', include_blank: "Selecione um tipo de entrada" %>  -->
+        <%= se.select :type_entry,  @typeentries, include_blank: "Selecione um tipo de entrada",  class: 'typesentries' %>  
     </div>
     
     <div class="field">
         <%= se.label :date_entry, value: @time %>
         <%= se.date_field :date_entry, max: Date.today %>
-
     </div>
 
     <div class="field">
@@ -59,7 +43,7 @@
 
     <div class="field">
         <%= se.label :unit_price, "Preço Unitario" %>
-        <%= se.text_field  :unit_price, class: 'pricemask', placeholder: '0,00' %>
+        <%= se.text_field  :unit_price, value: number_with_precision(se.object.unit_price, precision: 2), class: 'pricemask', placeholder: '0,00' %>
         
     </div>
 

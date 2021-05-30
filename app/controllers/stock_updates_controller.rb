@@ -1,7 +1,5 @@
 class StockUpdatesController < ApplicationController
 
-  # before_action :get_stock_entry, only: [:new]
-
   def index
     prepare_pesq_supplier
   end
@@ -9,8 +7,12 @@ class StockUpdatesController < ApplicationController
   def search
     if params[:q].blank?
       redirect_to stock_updates_path, notice: "Não ha fornecedor selecionado !!! "
+    else
+      @results = Stock.where(supplier_id: params[:q])
+      if @results.length < 1
+        redirect_to stock_updates_path, notice: "Não ha produtos cadastrados, para o fornecedor selecionado !!! "
+      end
     end
-      @results = Product.where(supplier_id: params[:q])
   end
 
   private 

@@ -1,9 +1,11 @@
 class ProductCompositionsController < ApplicationController
 
+  include Paginable
+
   before_action :set_product_composition, only: [:show, :edit, :update, :destroy]
 
   def index
-    @product_compositions = ProductComposition.all
+    @product_compositions = ProductComposition.all.page(current_page).per(per_page)
   end
 
   def show
@@ -18,7 +20,6 @@ class ProductCompositionsController < ApplicationController
 
   def create
     @product_composition = ProductComposition.new(product_composition_params)
-
     if @product_composition.save
       redirect_to @product_composition, notice: "Composição de Produto criado com sucesso !!!"
     else

@@ -1,9 +1,11 @@
 class ProductColorsController < ApplicationController
+
+  include Paginable
  
   before_action :set_product_color, only: [:show, :edit, :update, :destroy]
 
   def index
-    @product_colors = ProductColor.all
+    @product_colors = ProductColor.all.page(current_page).per(per_page)
   end
 
   def show
@@ -19,7 +21,6 @@ class ProductColorsController < ApplicationController
 
   def create
     @product_color = ProductColor.new(product_color_params)
-
     if @product_color.save
       redirect_to @product_color, notice: "Cor de Produto criado com sucesso !!!"
     else

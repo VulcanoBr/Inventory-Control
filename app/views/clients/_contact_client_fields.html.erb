@@ -5,28 +5,29 @@
             <%= f.label :contact_name, "Nome :" %>
             <%= f.text_field :client_name %>
         </div>
+
         <div class="field" >
             <%= f.label :email, "Email :" %>
             <%= f.text_field :email %>
         </div>
+
         <div class="field" >
             <%= f.label :telephone, "Telefone :" %>
             <%= f.text_field :telephone, class: 'phone-with-mask', placeholder: "(99)9999-9999", maxlength: "14" %>
-            
         </div>
+
         <div class="field" >
             <%= f.label :cell_phone, "Celular :" %>
             <%= f.text_field :cell_phone, class: 'phone-with-mask', placeholder: "(99)99999-9999", maxlength: "15" %>
             
         </div>
+
         <div class="field">
             <%= f.label :description, "Observação :" %>
             <%= f.text_field :description, id: "obs" %>
         </div>
 
         <%= link_to_remove_association "Excluir Contato", f %>  
-
-    
 
 </div>
 <br>

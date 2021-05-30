@@ -1,7 +1,7 @@
 <%= form_with(model: stock, local: true) do |p| %>
     <% if stock.errors.any? %>
         <div id="error_explanation">
-            <h6><%= pluralize(stock.errors.count, "error") %> probalited this stock from begin saved:</h6>
+            <h6><%= pluralize(stock.errors.count, "erro(s)") %> Encontrado(s) no preenchimento do formulario !!</h6>
 
             <ul>
                 <% stock.errors.full_messages.each do |message| %>
@@ -12,10 +12,21 @@
     <% end %>
 
      <div class="field">
-        <%= p.label :product_id_id, "Produto: " %>
+        <%= p.label :product_id, "Produto: " %>
         <%= p.select :product_id, @products, include_blank: "Selecione um produto..." %>
         
     </div>
+
+    <div class="field">
+        <%= p.label :supplier_id, "Fornecedor : " %>
+        <%= p.select :supplier_id, @sesuppliers, include_blank: "Selecione um fornecedor..." %>
+    </div>
+    
+    <div class="field">
+        <%= p.label :reference, "Referencia :" %>
+        <%= p.text_field :reference %>
+    </div>
+    
     
      <div class="field">
         <%= p.label :minimum_quantity, "Estoque Minimo : " %>

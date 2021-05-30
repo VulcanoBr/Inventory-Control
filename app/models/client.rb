@@ -1,5 +1,4 @@
 class Client < ApplicationRecord
-
     
     has_many :contact_clients, dependent: :destroy # possui muitod  endereços
     accepts_nested_attributes_for :contact_clients, reject_if: :all_blank, allow_destroy: true

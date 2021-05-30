@@ -5,21 +5,21 @@
 
 <p>
     <strong>Fornecedor:</strong>
-    <%= @stock_entry.stock.product.supplier.supplier_name %>
+    <%= @stock_entry.stock.supplier.supplier_name %>
 </p>
 
 <p>
     <strong>Produto:</strong>
-    <%= @stock_entry.stock.product.product_type.description + ", " + 
-        @stock_entry.stock.product.description + ", " + 
-        @stock_entry.stock.product.product_color.description + ", " + 
-        @stock_entry.stock.product.product_composition.description + ", " + 
-        @stock_entry.stock.product.product_size.description %>
+    <%= [@stock_entry.stock.product.product_type.description, 
+        @stock_entry.stock.product.description, 
+        @stock_entry.stock.product.product_color.description, 
+        @stock_entry.stock.product.product_composition.description, 
+        @stock_entry.stock.product.product_size.description].join(", ")  %>
 </p>
 
 <p>
     <strong>Referencia:</strong>
-    <%= @stock_entry.stock.product.reference %>
+    <%= @stock_entry.stock.reference %>
 </p>
 
 <p>
@@ -61,5 +61,5 @@
 
 <br>
 <%= link_to ' Alterar ', edit_stock_entry_path(@stock_entry), class: 'btn btn-primary btn-sm' %>    
-
 <%= link_to 'Nova Entrada no Estoque', stock_updates_path, class: 'btn btn-info btn-sm' %>
+<%= link_to 'Sair', homes_path, class: 'btn btn-dark btn-sm' %>

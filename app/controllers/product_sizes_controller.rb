@@ -1,9 +1,11 @@
 class ProductSizesController < ApplicationController
-   
+
+  include Paginable
+
   before_action :set_product_size, only: [:show, :edit, :update, :destroy]
 
   def index
-    @product_sizes = ProductSize.all
+    @product_sizes = ProductSize.all.page(current_page).per(per_page)
   end
 
   def show
@@ -18,7 +20,6 @@ class ProductSizesController < ApplicationController
 
   def create
     @product_size = ProductSize.new(product_size_params)
-
     if @product_size.save
       redirect_to @product_size, notice: "Tamanho de Produto criado com sucesso !!!"
     else

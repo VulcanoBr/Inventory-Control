@@ -1,14 +1,15 @@
 class ProductsController < ApplicationController
+
+  include Paginable
   
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.search(params[:search])
+    @products = Product.search(params[:search]).page(current_page).per(per_page)
   end
 
   def show
     prepare_form
-
   end
 
   def new
@@ -22,7 +23,6 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params) 
-    
     if @product.save
       redirect_to @product, notice: "Produto salvo com sucesso !!! "
     else
@@ -52,16 +52,16 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:product_type_id, :description, :reference, :product_composition_id,
-                   :product_color_id, :product_size_id, :supplier_id, :status, :search, :q)
+    params.require(:product).permit(:product_type_id, :description, :product_composition_id,
+                   :product_color_id, :product_size_id, :status, :search, :q)
   end
 
   def prepare_form
-    @product_types = ProductType.all.map { |type| [type.description, type.id] }
-    @product_colors = ProductColor.all.map { |color| [color.description, color.id] }
-    @product_sizes = ProductSize.all.map { |size| [size.description, size.id] }
-    @product_compositions = ProductComposition.all.map { |composition| [composition.description, composition.id] }
-    @sesuppliers = Supplier.all.map { |supplier| [supplier.supplier_name, supplier.id] }
+    @product_types = ProductType.order(:description).all.map { |type| [type.description, type.id] }
+    @product_colors = ProductColor.order(:description).all.map { |color| [color.description, color.id] }
+    @product_sizes = ProductSize.order(:description).all.map { |size| [size.description, size.id] }
+    @product_compositions = ProductComposition.order(:description).all.map { |composition| [composition.description, composition.id] }
+    
   end
 
 end

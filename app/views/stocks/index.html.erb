@@ -14,13 +14,14 @@
     </thead>
 
     <tbody>
-        <% @stocks.each do |s| %>
+        <% @stocks.sort_by{|s| s.supplier.supplier_name}.each do |s| %>
             <tr>
-                <td><%= s.product.description + ", " + s.product.product_color.description + ", " + 
-                        s.product.product_composition.description + ", " + 
-                        s.product.product_size.description %></td>
+                <td><%= [s.product.product_type.description, s.product.description, 
+                        s.product.product_color.description,  
+                        s.product.product_composition.description, 
+                        s.product.product_size.description].join(", ") %></td>
                 
-                <td><%= s.product.supplier.supplier_name %></td>
+                <td><%= s.supplier.supplier_name %></td>
                
                 <td><%= number_with_delimiter(s.minimum_quantity, delimiter: ".") %> </td>
                 <td><%= number_with_delimiter(s.quantity, delimiter: ".") %> </td>

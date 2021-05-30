@@ -20,9 +20,9 @@
 
 <ul>
     <% for @address_suppliers in @supplier.address_suppliers %>
-        <li><%= @address_suppliers.street + " " + @address_suppliers.number + " " + @address_suppliers.complement +
-                ", " + @address_suppliers.neighborhood + ", " + @address_suppliers.city + 
-                ", " + @address_suppliers.state + ", " + @address_suppliers.zip_code  %></li>
+        <li><%= [@address_suppliers.street, @address_suppliers.number, @address_suppliers.complement,
+                 @address_suppliers.neighborhood, @address_suppliers.city, 
+                 @address_suppliers.state, @address_suppliers.zip_code].join(", ")  %></li>
     <% end %>
 </ul>
 
@@ -30,11 +30,12 @@
 
 <ul>
     <% for @contact_suppliers in @supplier.contact_suppliers %>
-        <li><%= @contact_suppliers.supplier_name + ", " + @contact_suppliers.email + ", " + @contact_suppliers.telephone  +
-                ", " + @contact_suppliers.cell_phone + ", " + @contact_suppliers.description %> </li>
+        <li><%= [@contact_suppliers.supplier_name, @contact_suppliers.email, @contact_suppliers.telephone,
+                 @contact_suppliers.cell_phone, @contact_suppliers.description].join(", ") %> </li>
     <% end %>
 </ul>
 <br>
 <%= link_to ' Alterar ', edit_supplier_path(@supplier), class: 'btn btn-primary btn-sm' %>    
 <%= link_to ' Lista ', suppliers_path, class: 'btn btn-warning btn-sm' %>
 <%= link_to 'Novo Fornecedor', new_supplier_path, class: 'btn btn-info btn-sm' %>
+<%= link_to 'Sair', homes_path, class: 'btn btn-dark btn-sm' %>

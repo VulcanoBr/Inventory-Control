@@ -2,13 +2,18 @@
 <p id="notice"><%= notice %></p>
 <h5>Lista de Cliente(s)</h5>
 
-<br>
-<%= form_with(url: '/clients', method: 'get', local: true) do %>
-  <%= text_field_tag (:search) %>
-  <%= submit_tag "Pesquisar", class: "btn btn-info glyphicon glyphicon-search btn-sm" %>
-<% end %>
-<br>
-
+<div class="row">    
+    <%= form_with(url: '/clients', method: :get, local: true) do %>
+        <div class="column">  
+            <p> <%= text_field_tag (:search) %>
+                <%= submit_tag "Pesquisar", class: "btn btn-info btn-sm" %> 
+            </p>  
+        </div>
+    <% end %> 
+        <div  class="column pagination justify-content-end mt-2"> <p> <%= link_to_prev_page @clients, '<< Pagina Anterior'  %>
+            <%= link_to_next_page @clients, 'Proxima Pagina >>' %> </p>
+        </div>
+</div>
 
 <table>
     <thead>

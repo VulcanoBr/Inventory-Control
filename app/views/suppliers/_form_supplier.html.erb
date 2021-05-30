@@ -1,8 +1,7 @@
 <%= form_with(model: supplier, local: true) do |s| %>
     <% if supplier.errors.any? %>
         <div id="error_explanation">
-            <h2><%= pluralize(supplier.errors.count, "error") %> probalited this supplier from begin saved:</h2>
-
+            <h6><%= pluralize(supplier.errors.count, "erro(s)") %> Encontrado(s) no preenchimento do formulario !!</h6>
             <ul>
                 <% supplier.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
@@ -20,8 +19,6 @@
         <%= radio_button_tag :document_type, "cpf" %> CPF
         <%= radio_button_tag :document_type, "cnpj" %> CNPJ  : 
         <%= s.text_field :identification, class: "cpf-cnpj-with-mask", placeholder: "Escolha CPF ou CNPJ" %>
-       
-        <%= javascript_pack_tag "supplierradiobuttons" %>
     </div>
 
     <div class="field">
@@ -32,11 +29,9 @@
     <br>
 
     <div class="field">
-        
         <%= s.fields_for :address_suppliers do |as| %>
             <%= render "address_supplier_fields", f: as %>
         <% end %>
-        
     </div>
     
     <div class="links">
@@ -46,15 +41,12 @@
     <br>
 
     <div class="field">
-        
         <%= s.fields_for :contact_suppliers do |cs| %>
             <%= render "contact_supplier_fields", f: cs %>
         <% end %>
-        
     </div>
     <div class="links">
             <%= link_to_add_association "Adicionar Contato", s, :contact_suppliers %>
-            
     </div>
     <br>
     <div class="action">
@@ -63,5 +55,6 @@
     </div>
 <% end %>
 
+<%= javascript_pack_tag "supplierradiobuttons" %>
 <%= javascript_pack_tag 'masktel' %>
 

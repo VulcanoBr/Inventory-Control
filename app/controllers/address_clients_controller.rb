@@ -8,7 +8,6 @@ class AddressClientsController < ApplicationController
   end
 
   def show
-    
   end
 
   private

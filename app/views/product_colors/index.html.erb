@@ -2,4 +2,9 @@
 <p id="notice"><%= notice %></p>
 <h5>Lista de Cores de Produtos</h5>
 
+<div class="pagination justify-content-end">
+        <%= link_to_prev_page @product_colors, '<< Pagina Anterior' %>
+        <%= link_to_next_page @product_colors, 'Proxima Pagina >>' %>
+</div>
+
 <%= render "layouts/principal", resource: @product_colors %>

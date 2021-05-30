@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Estoque Minimo</th>
+            <th>Qtd. Atual</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% a = 0 %>
+        <% @results.each do |s| %>
+            
+            <% if a < 1 %>
+                        <h5>Lista de Produto(s) do Tipo </h5>
+                        <% a = 1 %>
+            <% end %>
+            <tr>
+                <td><%= [s[0]].join(", ") %></td>                        
+                <td><strong><%= number_with_delimiter(s[1], delimiter: ".") %></strong> </td>
+                <td> <strong> <span style="background-color:#FFA07A;"><%= number_with_delimiter(s[1], delimiter: ".")  %></span> </strong> </td>                              
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+    <br>
+
+    <%= link_to 'Sair', homes_path, class: 'btn btn-dark btn-sm' %>
+    <%= link_to 'Nova Pesquisa', reports_path, class: 'btn btn-warning btn-sm' %>

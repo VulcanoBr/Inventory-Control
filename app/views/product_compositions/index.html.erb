@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 <h5>Lista de Composição dos Produtos</h5>
 
+<div class="pagination justify-content-end">
+        <%= link_to_prev_page @product_compositions, '<< Pagina Anterior' %>
+        <%= link_to_next_page @product_compositions, 'Proxima Pagina >>' %>
+</div>
+
 <%= render "layouts/principal", resource: @product_compositions %>
 

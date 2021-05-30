@@ -1,9 +1,11 @@
 class SuppliersController < ApplicationController
 
+  include Paginable
+
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
 
   def index
-    @suppliers = Supplier.search(params[:search])
+    @suppliers = Supplier.search(params[:search]).page(current_page).per(per_page)
   end
 
   def show
@@ -25,7 +27,7 @@ class SuppliersController < ApplicationController
     else
       render :new
     end
-end
+  end
 
   
   def update

@@ -1,8 +1,8 @@
 <%= form_with(model: stock_out, local: true) do |so| %>
+   
     <% if stock_out.errors.any? %>
         <div id="error_explanation">
-            <h6><%= pluralize(stock_out.errors.count, "error") %> probalited this stock_out from begin saved:</h6>
-
+            <h6><%= pluralize(stock_out.errors.count, "erro(s)") %> Encontrado(s) no preenchimento do formulario !!</h6>
             <ul>
                 <% stock_out.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
@@ -10,11 +10,16 @@
             </ul>
         </div>
     <% end %>
-
     
     <div class="field">
         <%= so.label :stock_id, "Produto" %>
-        <%= so.select :stock_id, @stockprod, disabled: true %>
+        <%= so.select :stock_id, @stockprod %>
+    </div>
+
+    <div class="field">
+        <%= so.label :type_entry, "Tipo de Saida " %>
+        <%= so.select :type_out, @typeouts, 
+            include_blank: "Selecione um tipo de saida" %> 
     </div>
 
     <div class="field">        
@@ -24,13 +29,19 @@
     
     <div class="field">
         <%= so.label :invoice, "Numero do Pedido" %>
-        <%= so.text_field :order_number %>
+        <%= so.text_field :order_number %>  
     </div>
 
      <div class="field">
         <%= so.label :clientt_id, "Cliente :" %>
         <%= so.select :client_id, @clients, include_blank: "selecione um cliente..." %> 
     </div>
+
+    <div class="field">
+        <%= so.label  "Quantidade no Estoque : " %>
+        <strong> <%= so.label  @qtd  %> </strong>
+    </div>
+
 
     <div class="field">
         <%= so.label :quantity, "Quantidade" %>
@@ -48,6 +59,5 @@
         <%= link_to 'Cancelar', stock_updates_path, class: 'btn btn-danger btn-sm' %>
     </div>
 <% end %>
-
 
 
