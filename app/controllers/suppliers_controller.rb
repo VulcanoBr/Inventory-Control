@@ -5,7 +5,11 @@ class SuppliersController < ApplicationController
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
 
   def index
-    @suppliers = Supplier.search(params[:search]).page(current_page).per(per_page)
+    if search_params[:q].blank?
+      @suppliers = Supplier.all.page(current_page).per(per_page)
+    else  
+      @suppliers = Supplier.search(search_params[:q]).page(current_page).per(per_page)
+    end
   end
 
   def show
@@ -47,6 +51,10 @@ class SuppliersController < ApplicationController
 
   def set_supplier
     @supplier = Supplier.find(params[:id])
+  end
+
+  def search_params
+    params.permit(:q)
   end
 
   def supplier_params

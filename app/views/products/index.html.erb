@@ -4,8 +4,8 @@
 <div class="row">    
     <%= form_with(url: '/products', method: :get, local: true) do %>
         <div class="column">  
-            <p> <%= text_field_tag (:search) %>
-                <%= submit_tag "Pesquisar", class: "btn btn-info btn-sm" %> 
+            <p> <%= text_field_tag :q %>
+                <%= submit_tag "Pesquisar", data: {disable_with: 'Buscando....' }, class: "btn btn-info btn-sm" %> 
             </p>  
         </div>
     <% end %> 
@@ -28,7 +28,7 @@
                          p.product_color.description, p.product_size.description].join(", ") %></td>
                 <td><%= link_to ' Visualizar ', product_path(p),  class: 'btn btn-secondary btn-sm'  %></td>
                 <td><%= link_to ' Alterar ', edit_product_path(p), class: 'btn btn-success btn-sm' %></td>
-                <td><%= link_to ' Excluir ', p, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %> </td>
+                <td><%= link_to ' Excluir ', p, method: :delete, data: { confirm: "Voce tem certeza que quer Excluir ?" }, class: 'btn btn-danger btn-sm' %> </td>
             </tr>
         <% end %>
     </tbody>

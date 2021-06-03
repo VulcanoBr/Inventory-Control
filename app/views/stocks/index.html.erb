@@ -29,7 +29,7 @@
                         
                 <td><%= link_to ' Visualizar ', stock_path(s),  class: 'btn btn-secondary btn-sm'  %></td>
                 <td><%= link_to ' Alterar ', edit_stock_path(s), class: 'btn btn-success btn-sm' %></td>
-                <td><%= link_to ' Excluir ', s, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %> </td>
+                <td><%= link_to ' Excluir ', s, method: :delete, data: { confirm: "Voce tem certeza que quer Excluir ?" }, class: 'btn btn-danger btn-sm' %> </td>
                 
             </tr>
         <% end %>

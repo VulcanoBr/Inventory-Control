@@ -1,4 +1,6 @@
 class Client < ApplicationRecord
+
+    include PgSearch
     
     has_many :contact_clients, dependent: :destroy # possui muitod  endereços
     accepts_nested_attributes_for :contact_clients, reject_if: :all_blank, allow_destroy: true
@@ -10,14 +12,9 @@ class Client < ApplicationRecord
     
     validate :cpfcnpj
 
-    def self.search(search)
-        if search
-            @parameter = search.downcase 
-            where(["lower(client_name) LIKE ?","%#{@parameter}%"])
-        else
-            all
-        end
-    end
+    pg_search_scope :search, 
+        against: %i[client_name],
+        using: {tsearch: { prefix: true } }
 
     private
 

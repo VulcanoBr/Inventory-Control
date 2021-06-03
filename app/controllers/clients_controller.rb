@@ -5,7 +5,11 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   def index
-    @clients = Client.search(params[:search]).page(current_page).per(per_page)
+    if search_params[:q].blank?
+      @clients = Client.all.page(current_page).per(per_page)
+    else  
+      @clients = Client.search(search_params[:q]).page(current_page).per(per_page)
+    end
   end
 
   def show
@@ -46,6 +50,10 @@ class ClientsController < ApplicationController
 
   def set_client
     @client = Client.find(params[:id])
+  end
+
+  def search_params
+    params.permit(:q)
   end
 
   def client_params

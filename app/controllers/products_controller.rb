@@ -5,7 +5,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.search(params[:search]).page(current_page).per(per_page)
+    if search_params[:q].blank?
+      @products = Product.all.page(current_page).per(per_page)
+    else
+      @products = Product.search(search_params[:q]).page(current_page).per(per_page)
+    end
   end
 
   def show
@@ -51,9 +55,13 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def search_params
+    params.permit(:q)
+  end
+
   def product_params
     params.require(:product).permit(:product_type_id, :description, :product_composition_id,
-                   :product_color_id, :product_size_id, :status, :search, :q)
+                   :product_color_id, :product_size_id, :status)
   end
 
   def prepare_form

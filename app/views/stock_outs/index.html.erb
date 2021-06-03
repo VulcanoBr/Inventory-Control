@@ -28,7 +28,7 @@
                 <td><strong><%= number_with_delimiter(so.quantity, delimiter: ".") %></strong> </td>
                 <td><%= link_to ' Visualizar ', stock_out_path(so),  class: 'btn btn-secondary btn-sm'  %></td>
                 <td><%= link_to ' Alterar ', edit_stock_out_path(so), class: 'btn btn-success btn-sm' %></td>
-                <td><%= link_to ' Excluir ', so, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %> </td>      
+                <td><%= link_to ' Excluir ', so, method: :delete, data: { confirm: "Voce tem certeza que quer Excluir ?" }, class: 'btn btn-danger btn-sm' %> </td>      
             </tr>
         <% end %>
     </tbody>

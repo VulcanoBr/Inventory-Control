@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+
+  include PgSearch
   
   belongs_to :product_type
   belongs_to :product_composition
@@ -18,19 +20,11 @@ class Product < ApplicationRecord
         ).order('product_types.description', 'products.description') }
  
 
-  def self.search(search)
-    if search
-        joins(:product_type)
-          .where(["lower(product_types.description) LIKE ? OR lower(products.description) LIKE ?",
-                 "%#{search.downcase}%", "%#{search.downcase}%"])
-          .order('product_types.description', 'products.description')
-    else
-        all.joins(:product_type)
-          .order('product_types.description', 'products.description')
-    end
-      
-  end
-
+  pg_search_scope :search, 
+      against: %i[description],
+      associated_against: { product_type: %i[description] },
+      using: {tsearch: { prefix: true } }
+        
   before_create do
     self.status = "active"
   end

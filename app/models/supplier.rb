@@ -1,5 +1,7 @@
 class Supplier < ApplicationRecord
 
+    include PgSearch
+
     has_many :products
 
     has_many :contact_suppliers, dependent: :destroy # possui muitod  endereços
@@ -12,14 +14,10 @@ class Supplier < ApplicationRecord
     
     validate :cpfcnpj
 
-    def self.search(search)
-        if search
-            @parameter = search.downcase 
-            where(["lower(supplier_name) LIKE ?","%#{@parameter}%"])
-        else
-            all
-        end
-    end
+    pg_search_scope :search, 
+        against: %i[supplier_name],
+        using: {tsearch: { prefix: true } }
+        
 
     private
 
