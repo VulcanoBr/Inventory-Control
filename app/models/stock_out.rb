@@ -1,6 +1,6 @@
 class StockOut < ApplicationRecord
 
-  belongs_to :client
+  belongs_to :client, optional: true
   belongs_to :stock
 
   validates :date_out, :type_out, presence: true
@@ -15,7 +15,7 @@ class StockOut < ApplicationRecord
   private
 
   def type_out_client?
-    type_out == "1"
+    type_out > "2"
   end
 
   def check_quantity

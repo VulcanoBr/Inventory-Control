@@ -89,7 +89,7 @@ class StockOutsController < ApplicationController
   end
 
   def prepare_form_type_out
-    @typeouts = [["Material para Fabricação", 0], ["Material para Cliente", 1], ["Devolução Estoque para Fornecedor", 2], ["Devolução para Fornecedor", 3]]
+    @typeouts = [["Material para Fabricação", 0], ["Devolução para Fornecedor", 1], ["Devolução Estoque para Fornecedor", 2], ["Material para Cliente", 3]]
   end
   
 end

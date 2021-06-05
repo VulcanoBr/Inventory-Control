@@ -32,16 +32,12 @@ function clean_form() {
 
 function addTypeEntryDocumentField() {
     
-      document.querySelectorAll("select[name='stock_entry[type_entry]']").forEach((select) => {
-         
+    document.querySelectorAll("select[name='stock_entry[type_entry]']").forEach((select) => {
+
         select.addEventListener("change", ({ target }) => {
-        //var result = select.options[select.selectedIndex].value;
-        
-       // document.querySelector("input[name='stock_entry[type_entry]']").value = result;
             switch (target.value) {
             case "0":
                 clean_form();
-                
                 break;
             case "1":
                 fill_form();
@@ -58,7 +54,7 @@ function addTypeEntryDocumentField() {
             default :
                 clean_form();
             }
-      });
+        });
     });
 };
 

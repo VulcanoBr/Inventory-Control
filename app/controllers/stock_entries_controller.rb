@@ -78,10 +78,6 @@ class StockEntriesController < ApplicationController
     params.require(:stock_entry).permit(:id, :date_invoice, :invoice, :quantity, :unit_price, 
                     :date_entry, :description, :stock_id, :type_entry, :q, :product_id, :entry_cod)
   end
-  
-  #def prepare_form_supplier
-  #  @sesuppliers = Supplier.order(:supplier_name).all.map { |supplier| [supplier.supplier_name, supplier.id] }
-  #end
 
   def prepare_form_type_entry
     @typeentries = [["Material de Fornecedor", 0], ["Retorno para Estoque", 1], ["Devolução de Cliente", 2], ["Material Fabricado", 3]]
