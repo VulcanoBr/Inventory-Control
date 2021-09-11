@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <h5>Lista de Produto(s) em Estoque</h5>
 
 <table>
@@ -14,7 +14,7 @@
     </thead>
 
     <tbody>
-        <% @stocks.sort_by{|s| s.supplier.supplier_name}.each do |s| %>
+        <% @stocks.each do |s| %>
             <tr>
                 <td><%= [s.product.product_type.description, s.product.description, 
                         s.product.product_color.description,  
@@ -23,9 +23,9 @@
                 
                 <td><%= s.supplier.supplier_name %></td>
                
-                <td><%= number_with_delimiter(s.minimum_quantity, delimiter: ".") %> </td>
-                <td><%= number_with_delimiter(s.quantity, delimiter: ".") %> </td>
-                <td><%= number_to_currency(s.last_unit_price, :unit => "R$", :separator => ",", :delimiter => ".") %> </td>
+                <td><%= format_quantity(s.minimum_quantity) %> </td>
+                <td><%= format_quantity(s.quantity) %> </td>
+                <td><%= format_price(s.last_unit_price) %> </td>
                         
                 <td><%= link_to ' Visualizar ', stock_path(s),  class: 'btn btn-secondary btn-sm'  %></td>
                 <td><%= link_to ' Alterar ', edit_stock_path(s), class: 'btn btn-success btn-sm' %></td>

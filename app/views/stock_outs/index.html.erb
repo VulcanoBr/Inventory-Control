@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <h5>Lista de Saidas do Estoque</h5>
 
@@ -21,11 +21,11 @@
     <tbody>
         <% @stock_outs.each do |so| %>
             <tr>
-                <td><%= so.date_out.strftime("%d/%m/%Y") %></td>
+                <td><%= format_date(so.date_out) %></td>
                 <td><%= [so.stock.product.product_type.description, so.stock.product.description, 
                             so.stock.product.product_color.description].join(", ") %></td>                        
                 <td><%= so.stock.supplier.supplier_name %></td>                        
-                <td><strong><%= number_with_delimiter(so.quantity, delimiter: ".") %></strong> </td>
+                <td><strong><%= format_quantity(so.quantity) %></strong> </td>
                 <td><%= link_to ' Visualizar ', stock_out_path(so),  class: 'btn btn-secondary btn-sm'  %></td>
                 <td><%= link_to ' Alterar ', edit_stock_out_path(so), class: 'btn btn-success btn-sm' %></td>
                 <td><%= link_to ' Excluir ', so, method: :delete, data: { confirm: "Voce tem certeza que quer Excluir ?" }, class: 'btn btn-danger btn-sm' %> </td>      

@@ -1,5 +1,4 @@
 
-<p id="notice"> <%= notice %> </p>
 
 <h5>Entrada no Estoque</h5>
 
@@ -29,12 +28,12 @@
 
 <p>
     <strong>Data de Entrada:</strong>
-    <%= @stock_entry.date_entry.strftime("%d/%m/%Y") %>
+    <%= format_date(@stock_entry.date_entry) %>
 </p>
 
 <p>
     <strong>Data da Nota Fiscal:</strong>
-    <%= @stock_entry.date_invoice.strftime("%d/%m/%Y")  %>
+    <%= format_date(@stock_entry.date_invoice) %>
 </p>
 
 <p>
@@ -42,21 +41,24 @@
     <%= @stock_entry.invoice %>
 </p>
 
-<p>Quantidade:</strong>
-    <%= number_with_delimiter(@stock_entry.quantity, delimiter: ".") %>
+<p>
+    <strong>Quantidade:</strong>
+    <%= format_quantity(@stock_entry.quantity) %>
 </p>
 
-<p>Preço Unitario:</strong>
-    <%=  number_to_currency(@stock_entry.unit_price, locale: :"pt-BR") %>
+<p>
+    <strong>Preço Unitario:</strong>
+    <%=  format_price(@stock_entry.unit_price) %>
 </p>
 
-<p>Observação:</strong>
+<p>
+    <strong>Observação:</strong>
     <%= @stock_entry.description %>
 </p>
 
 <p>
     <strong>Data Atualização:</strong>
-    <%= @stock_entry.updated_at.strftime("%d/%m/%Y %H:%M") %>
+    <%= format_date_hours(@stock_entry.updated_at) %>
 </p>
 
 <br>

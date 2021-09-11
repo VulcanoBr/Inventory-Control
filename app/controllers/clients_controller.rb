@@ -6,7 +6,7 @@ class ClientsController < ApplicationController
 
   def index
     if search_params[:q].blank?
-      @clients = Client.all.page(current_page).per(per_page)
+      @clients = Client.sorted_client.page(current_page).per(per_page)
     else  
       @clients = Client.search(search_params[:q]).page(current_page).per(per_page)
     end

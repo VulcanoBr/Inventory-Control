@@ -12,6 +12,8 @@ class Client < ApplicationRecord
     
     validate :cpfcnpj
 
+    scope :sorted_client, -> { order('client_name') }
+
     pg_search_scope :search, 
         against: %i[client_name],
         using: {tsearch: { prefix: true } }

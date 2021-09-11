@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <h5>Lista de Entrada(s)</h5>
 
@@ -10,7 +10,7 @@
 <table>
     <thead>
         <tr>
-            <th>Data Entrada</th>
+            <th >Data Entrada</th>
             <th>Produto</th>
             <th>Fornecedor </th>
             <th>Qtd.</th>
@@ -22,12 +22,12 @@
     <tbody>
         <% @stock_entries.each do |se| %>
             <tr>
-                <td><%= se.date_entry.strftime("%d/%m/%Y") %></td>
+                <td><%= format_date(se.date_entry) %></td>
                 <td><%= [se.stock.product.product_type.description, se.stock.product.description, 
                             se.stock.product.product_color.description].join(", ") %></td>                        
                 <td><%= se.stock.supplier.supplier_name %></td>                        
-                <td><strong><%= number_with_delimiter(se.quantity, delimiter: ".") %></strong> </td>
-                <td><strong><%= number_to_currency(se.unit_price, :unit => "R$", :separator => ",", :delimiter => ".")  %> </strong> </td> 
+                <td><strong><%= format_quantity(se.quantity) %></strong> </td>
+                <td><strong><%= format_price(se.unit_price)  %> </strong> </td> 
                 <td><%= link_to ' Visualizar ', stock_entry_path(se),  class: 'btn btn-secondary btn-sm'  %></td>
                 <td><%= link_to ' Alterar ', edit_stock_entry_path(se), class: 'btn btn-success btn-sm' %></td>
                 <td><%= link_to ' Excluir ', se, method: :delete, data: { confirm: "Voce tem certeza que quer Excluir ?" }, class: 'btn btn-danger btn-sm' %> </td> 

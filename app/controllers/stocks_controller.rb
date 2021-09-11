@@ -6,7 +6,7 @@ class StocksController < ApplicationController
   before_action :prepare_supplier
 
   def index
-    @stocks = Stock.all.page(current_page).per(per_page)
+    @stocks = Stock.sorted_stock.page(current_page).per(per_page)
   end
 
   def show

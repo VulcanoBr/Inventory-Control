@@ -1,4 +1,4 @@
-<p id="notice"> <%= notice %> </p>
+
 
 <h5>Produto em Estoque</h5>
 
@@ -20,17 +20,17 @@
 
 <p>
     <strong>Estoque Minimo:</strong>
-    <%= number_with_delimiter(@stock.minimum_quantity, delimiter: ".") %>
+    <%= format_quantity(@stock.minimum_quantity) %>
 </p>
 
 <p>
     <strong>Quantidade:</strong>
-    <%= number_with_delimiter(@stock.quantity, delimiter: ".") %>
+    <%= format_quantity(@stock.quantity) %>
 </p>
 
 <p>
     <strong>Ultimo Preço:</strong>
-    <%= number_to_currency(@stock.last_unit_price, locale: :"pt-BR") %>
+    <%= format_price(@stock.last_unit_price) %>
 </p>
 
 <p>
@@ -40,7 +40,7 @@
 
 <p>
     <strong>Data Atualização:</strong>
-    <%= @stock.updated_at.strftime("%d/%m/%Y %H:%M") %>
+    <%= format_date_hours(@stock.updated_at) %>
 </p>
 
 <br>

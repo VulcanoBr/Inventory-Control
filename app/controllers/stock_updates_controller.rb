@@ -8,7 +8,7 @@ class StockUpdatesController < ApplicationController
     if params[:q].blank?
       redirect_to stock_updates_path, notice: "Não ha fornecedor selecionado !!! "
     else
-      @results = Stock.where(supplier_id: params[:q])
+      @results = Stock.find_update(params[:q])
       if @results.length < 1
         redirect_to stock_updates_path, notice: "Não ha produtos cadastrados, para o fornecedor selecionado !!! "
       end

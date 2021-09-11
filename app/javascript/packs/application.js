@@ -15,11 +15,16 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import 'bootstrap';
-import '../src/application.css';
-import '../src/style_navbar.css';
 
-import "cocoon-js-vanilla";
+
+import 'bootstrap' 
+import '../src/application.css' 
+import '../src/style_navbar.css' 
+
+import "cocoon-js-vanilla"
+
+import '../packs/navbar.js'
+//require("navcar")
 
 //import $ from 'jquery';
 //global.$ = $;

@@ -1,42 +1,40 @@
-@import 'bootstrap';
 
-body {
-  font-family:  'Lucida Console', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background: #f2f2f2;
-}
+  
+/* minhas configurações */
 
 .navbar .nav-item:not(:last-child) {
-  margin-right: 15px;
+    margin-right: 35px;
 }
-
-.dropdown-toggle::after {
-   transition: transform 0.15s linear; 
-}
-
-.show.dropdown .dropdown-toggle::after {
-  transform: translateY(3px);
-}
-
-.dropdown-menu {
-  margin-top: 1px;
-}
-
-.dropdown-item {
-  padding: 2px;
-  text-align: center;
-  background-color: blue;
-  color: white;
-  font: bold;
-}
-
-.nav-link {
-  color:green;
-  font: bolder;
   
+.dropdown-toggle::after {
+     transition: transform 0.15s linear; 
+}
+  
+.show.dropdown .dropdown-toggle::after {
+    transform: translateY(3px);
+   
+}
+  
+.dropdown-menu {
+    margin-top: 0;
+} 
+
+
+.container-fluid img {
+    margin-top: 15px;
 }
 
-.navbar-form  {
-  margin-right: 15px;
-  color: white;
+.navbar-nav ul {
+    color: rgb(233, 245, 239);
+    font: bold;
 }
 
+.navbar-nav li:hover > a{ background:#999;  color:#fff;}
+
+/* .navbar-nav .dropdown-item li:hover > a{ background:rgb(243, 17, 17); }  */
+
+.navbar-nav li a:hover {
+    color:black;
+    font: bold;
+    background: linear-gradient(#5deebb, #2fe912);
+}

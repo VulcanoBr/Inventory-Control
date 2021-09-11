@@ -1,4 +1,4 @@
-<p id="notice"> <%= notice %> </p>
+
 
 <h5>Cliente</h5>
 
@@ -30,8 +30,8 @@
 
 <ul>
     <% for @contact_clients in @client.contact_clients %>
-        <li><%= @contact_clients.client_name + ", " + @contact_clients.email + ", " + @contact_clients.telephone  +
-                ", " + @contact_clients.cell_phone + ", " + @contact_clients.description %> </li>
+        <li><%= [@contact_clients.client_name, @contact_clients.email, @contact_clients.telephone,
+                 @contact_clients.cell_phone, @contact_clients.description].join(", ") %> </li>
     <% end %>
 </ul>
 <br>

@@ -14,6 +14,8 @@ class Supplier < ApplicationRecord
     
     validate :cpfcnpj
 
+    scope :sorted_supplier, -> { order('supplier_name') }
+
     pg_search_scope :search, 
         against: %i[supplier_name],
         using: {tsearch: { prefix: true } }

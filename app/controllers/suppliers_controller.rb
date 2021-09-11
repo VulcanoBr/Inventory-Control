@@ -6,7 +6,7 @@ class SuppliersController < ApplicationController
 
   def index
     if search_params[:q].blank?
-      @suppliers = Supplier.all.page(current_page).per(per_page)
+      @suppliers = Supplier.sorted_supplier.page(current_page).per(per_page)
     else  
       @suppliers = Supplier.search(search_params[:q]).page(current_page).per(per_page)
     end

@@ -24,7 +24,6 @@ class StockOut < ApplicationRecord
       errors.add(:quantity.to_s, ", Quantidade Nâo foi preenchida")
     else 
         if  quantity  >  stock.quantity
-          
             errors.add("Quantidade #{quantity.to_s} informada, ",  "Nâo Pode ser Maior  que #{stock.quantity} ")
         else
             if quantity < 1

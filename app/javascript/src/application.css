@@ -1,5 +1,9 @@
 @import 'bootstrap';
 
+
+
+/* minhas configurações */ 
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +11,7 @@
 }
 
 .container {
-    max-width: 935px;
+    max-width: 960px;
     margin-left: auto;
     margin-right: auto;
     padding: 0 1rem;
@@ -101,7 +105,7 @@ form .actions input[type='submit'] {
 }
 
 .navbar-form {
-    padding: 10px;
-    align-content: space-between;
-    font-size: 20px;
+    padding: 8px;
+    display: flex;
+    font-size: 16px;
 }

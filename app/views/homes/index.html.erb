@@ -18,15 +18,15 @@
                </thead>
 
                <tbody>
-                    <% @stocks.sort_by{|s| s.supplier.supplier_name}.each do |s| %>
+                    <% @stocks.each do |s| %>
                          <tr>
                               <td><%= [s.product.product_type.description, s.product.description, 
                                         s.product.product_color.description, 
                                         s.product.product_composition.description, 
                                         s.product.product_size.description].join(", ") %></td>                        
                               <td><%= s.supplier.supplier_name %></td>                        
-                              <td><strong><%= number_with_delimiter(s.minimum_quantity, delimiter: ".") %></strong> </td>
-                              <td> <strong> <span style="background-color:#FFA07A;"><%= number_with_delimiter(s.quantity, delimiter: ".")  %></span> </strong> </td>                              
+                              <td><strong><%= format_quantity(s.minimum_quantity) %></strong> </td>
+                              <td> <strong> <span style="background-color:#FFA07A;"><%= format_quantity(s.quantity)  %></span> </strong> </td>                              
                          </tr>
                     <% end %>
                </tbody>

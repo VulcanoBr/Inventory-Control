@@ -1,4 +1,4 @@
-<p id="notice"> <%= notice %> </p>
+
 
 <h5>Saida do Estoque</h5>
 
@@ -26,7 +26,7 @@
 
 <p>
     <strong>Data da Saida:</strong>
-    <%= @stock_out.date_out.strftime("%d/%m/%Y") %>
+    <%= format_date(@stock_out.date_out) %>
 </p>
 
 <p>
@@ -39,17 +39,19 @@
     <%= @stock_out.client&.client_name %>
 </p>
 
-<p>Quantidade:</strong>
+<p>
+    <strong>Quantidade:</strong>
     <%= @stock_out.quantity %>
 </p>
 
-<p>Observação:</strong>
+<p>
+    <strong>Observação:</strong>
     <%= @stock_out.description %>
 </p>
 
 <p>
     <strong>Data Atualização:</strong>
-    <%= @stock_out.updated_at.strftime("%d/%m/%Y %H:%M") %>
+    <%= format_date_hours(@stock_out.updated_at) %>
 </p>
 
 <br>
