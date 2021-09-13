@@ -11,7 +11,7 @@
 
     <tbody>
         <% if @results.length > 0 %>
-            <h5>Lista de Produto(s) do Tipo </h5>
+            <h5>Lista de Produto(s) do Tipo <%= @prod_type_name %> </h5>
         <% end %>
         <% @results.each do |s| %>
             <tr>
