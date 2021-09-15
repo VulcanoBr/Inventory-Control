@@ -1,16 +1,20 @@
 
 <h5>Lista dos produtos no  Estoque</h5>
 
-<%= form_with(url: '/report', method: 'get', local: true, 
-    class: 'navbar-form navbar-left navbar-dark bg-dark') do %>  
-    
-        <%= label_tag :q, " Selecionar um Tipo " %>
-        <%= select_tag :q,
-            options_for_select(@product_types), include_blank: true %>
-    
-        <%= submit_tag " Pesquisar Produto(s) ", class: 'fas fa-search' %> 
-    
+<%= form_with(url: '/report', method: 'get', local: true) do %>
+    <div class="row justify-content-left padding">
+        <div class="col-md-8 ftco-animate fadeInUp ftco-animated">
+            <form action="#" class="domain-form">
+                <div class="form-group d-md-flex"> 
+                    <%= select_tag :q,
+                        options_for_select(@product_types), class:"custom-select px-4", 
+                        include_blank: "Selecione um Tipo" %>
+                    
+                    <%= submit_tag " Pesquisar Produto(s) ", class:"btn btn-primary px-5" %> 
+                </div>
+            </form>
+        </div>
+    </div>
 <% end %>
-<br>
 
 <%= link_to 'Sair', homes_path, class: 'btn btn-dark btn-sm' %>

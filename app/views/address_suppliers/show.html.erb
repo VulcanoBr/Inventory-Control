@@ -7,19 +7,13 @@
             <th>Cidade</th>
             <th>Estado</th>
             <th>Codigo Postal</th>
-        
         </tr>
     </thead>
 
     <tbody>
-        <% a = 0 %>
 
-        <% @address_suppliers.each do |as| %>  
-            <% if a < 1 %>
-                <h5>Endereço(s) do Fornecedor => <%= @address_supplier.supplier_name %> </h5> 
-                    <% a = 1 %>
-                    <br>
-            <% end %>
+        <% @address_suppliers.each do |as| %> 
+            <h5>Endereço(s) do Fornecedor => <%= @address_supplier.supplier_name %> </h5> 
             <tr>
                 <td><%= as.street + " " + as.number + " " + as.complement %></td>
                 <td><%= as.neighborhood %></td>

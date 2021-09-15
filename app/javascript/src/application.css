@@ -104,7 +104,7 @@ form .actions input[type='submit'] {
     display: flex;
 }
 
-.navbar-form {
+.navbar {
     padding: 8px;
     display: flex;
     font-size: 16px;

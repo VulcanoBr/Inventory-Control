@@ -12,12 +12,7 @@
     </thead>
 
     <tbody>
-    
-        <% if @contact_suppliers.length > 0 %> 
-                <h5>Contato(s) do Fornecedor => <%= @contact_supplier.supplier_name %> </h5> 
-                <br>
-        <% end %>
-
+        <h5>Contato(s) do Fornecedor => <%= @contact_supplier.supplier_name %> </h5> 
         <% @contact_suppliers.each do |cs| %>  
             <tr>
                 <td><%= cs.supplier_name %></td>

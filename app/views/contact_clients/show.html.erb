@@ -8,16 +8,11 @@
             <th>Telefone</th>
             <th>Celular</th>
             <th>Observação</th>
-        
         </tr>
     </thead>
 
     <tbody>
-        <% if @contact_clients.length > 0 %> 
-                <h5>Contato(s) do Cliente => <%= @contact_client.client_name %> </h5> 
-                <br>
-            <% end %>
-
+        <h5>Contato(s) do Cliente => <%= @contact_client.client_name %> </h5> 
         <% @contact_clients.each do |cc| %>  
             <tr>
                 <td><%= cc.client_name %></td>
